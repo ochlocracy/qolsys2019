@@ -2,7 +2,6 @@ package SanityTests;
 
 import PanelPages.*;
 import ServiceCalls.PanelInfo_ServiceCalls;
-import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.AfterClass;
@@ -718,8 +717,8 @@ public class Settings extends Setup {
         Thread.sleep(2000);
     }
 
-    @Test(priority = 15)
-    public void Settings_Test16() throws Exception {
+    @Test(priority = 11)
+    public void Settings_Test11() throws Exception {
         System.out.println("Settings.Panic_Disable");
         SirenAlarmsPage siren = PageFactory.initElements(driver, SirenAlarmsPage.class);
         SettingsPage settings = PageFactory.initElements(driver, SettingsPage.class);
@@ -794,60 +793,58 @@ public class Settings extends Setup {
         settings.Home_button.click();
         Thread.sleep(2000);
     }
-//
-//    @Test(priority = 16)
-//    public void Settings_Test17() throws Exception {
-//        report = new ExtentReports(projectPath + "/Report/SanityReport.html", false);
-//        log = report.startTest("Settings.Secure_Arming");
-//        SettingsPage settings = PageFactory.initElements(driver, SettingsPage.class);
-//        SecurityArmingPage arming = PageFactory.initElements(driver, SecurityArmingPage.class);
-//        AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
-//        InstallationPage inst = PageFactory.initElements(driver, InstallationPage.class);
-//        HomePage home = PageFactory.initElements(driver, HomePage.class);
-//        Thread.sleep(2000);
-//        logger.info("Verify no code is required to Arm the system when setting is disabled");
-//        log.log(LogStatus.INFO, "Verify no code is required to Arm the system when setting is disabled");
-//        home.DISARM.click();
-//        home.ARM_STAY.click();
-//        Thread.sleep(2000);
-//        verifyArmstay();
-//        log.log(LogStatus.PASS, "Pass: System is in Arm Stay mode, no password was required");
-//        home.DISARM.click();
-//        enterDefaultUserCode();
-//        Thread.sleep(2000);
-//        navigateToAdvancedSettingsPage();
-//        adv.INSTALLATION.click();
-//        inst.SECURITY_AND_ARMING.click();
-//        Thread.sleep(1000);
-//        swipeVertical();
-//        arming.Secure_Arming.click();
-//        Thread.sleep(2000);
-//        settings.Home_button.click();
-//        Thread.sleep(2000);
-//        logger.info("Verify code is required to Arm the system when setting is enabled");
-//        log.log(LogStatus.INFO, "Verify code is required to Arm the system when setting is enabled");
-//        home.DISARM.click();
-//        home.ARM_STAY.click();
-//        if (home.Enter_Code_to_Access_the_Area.isDisplayed()) {
-//            logger.info("Pass: code is requires to Arm the system");
-//            log.log(LogStatus.PASS, "Pass: code is requires to Arm the system");
-//        }
-//        enterDefaultUserCode();
-//        Thread.sleep(2000);
-//        home.DISARM.click();
-//        enterDefaultUserCode();
-//        Thread.sleep(2000);
-//        navigateToAdvancedSettingsPage();
-//        adv.INSTALLATION.click();
-//        inst.SECURITY_AND_ARMING.click();
-//        Thread.sleep(1000);
-//        swipeVertical();
-//        arming.Secure_Arming.click();
-//        Thread.sleep(1000);
-//        settings.Home_button.click();
-//        Thread.sleep(2000);
-//    }
-//
+
+    @Test(priority = 12)
+    public void Settings_Test12() throws Exception {
+        System.out.println("Settings.Secure_Arming");
+        settings = PageFactory.initElements(driver, SettingsPage.class);
+        arming = PageFactory.initElements(driver, SecurityArmingPage.class);
+        adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
+        inst = PageFactory.initElements(driver, InstallationPage.class);
+        home = PageFactory.initElements(driver, HomePage.class);
+        Thread.sleep(2000);
+        System.out.println("Verify no code is required to Arm the system when setting is disabled");
+        home.DISARM.click();
+        home.ARM_STAY.click();
+        Thread.sleep(2000);
+        verifySystemState("ARMED STAY");
+        System.out.println("Pass: System is in Arm Stay mode, no password was required");
+        DISARM();
+        Thread.sleep(2000);
+        navigateToAdvancedSettingsPage();
+        adv.INSTALLATION.click();
+        inst.SECURITY_AND_ARMING.click();
+        Thread.sleep(1000);
+        swipeVertical();
+        arming.Secure_Arming.click();
+        Thread.sleep(2000);
+        settings.Home_button.click();
+        Thread.sleep(2000);
+        System.out.println("Verify code is required to Arm the system when setting is enabled");
+        ARM_STAY();
+        try {
+            if (home.Enter_Code_to_Access_the_Area.isDisplayed()) {
+                System.out.println("Pass: code is requires to Arm the system");
+            } else {
+                System.out.println("FAIL: no code is requires to Arm the system");
+            }
+        } catch (NoSuchElementException e) {}
+        enterDefaultUserCode();
+        Thread.sleep(2000);
+        DISARM();
+        Thread.sleep(2000);
+        navigateToAdvancedSettingsPage();
+        adv.INSTALLATION.click();
+        inst.SECURITY_AND_ARMING.click();
+        Thread.sleep(1000);
+        swipeVertical();
+        arming.Secure_Arming.click();
+        Thread.sleep(1000);
+        settings.Home_button.click();
+        Thread.sleep(2000);
+    }
+
+    //
 //    @Test(priority = 17)
 //    public void Settings_Test18() throws Exception {
 //        report = new ExtentReports(projectPath + "/Report/SanityReport.html", false);
