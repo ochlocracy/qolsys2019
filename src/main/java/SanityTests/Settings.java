@@ -843,7 +843,6 @@ public class Settings extends Setup {
         settings.Home_button.click();
         Thread.sleep(2000);
     }
-
     //
 //    @Test(priority = 17)
 //    public void Settings_Test18() throws Exception {
