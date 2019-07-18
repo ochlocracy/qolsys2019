@@ -3,9 +3,7 @@ package APICalls;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * Created by qolsys on 7/16/19.
- */
+
 public class APIEnvironment {
 
     public static final Map<String, String> getEnvironment() {
