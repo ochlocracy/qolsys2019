@@ -58,7 +58,7 @@ public class PostUpdateUserManagement extends Setup {
     @Test(priority = 2)
     public void verifyNewGuestCodeWorks() throws Exception {
         System.out.println("Verifying a new guest code is working correctly");
-        HomePage home = PageFactory.initElements(driver, HomePage.class);
+        home = PageFactory.initElements(driver, HomePage.class);
         ARM_STAY();
         Thread.sleep(1000);
         home.DISARM.click();
@@ -74,7 +74,7 @@ public class PostUpdateUserManagement extends Setup {
     @Test(priority =3)
     public void deleteNewUsers() throws Exception {
         UserManagementPage user_m = PageFactory.initElements(driver, UserManagementPage.class);
-         home = PageFactory.initElements(driver, HomePage.class);
+        home = PageFactory.initElements(driver, HomePage.class);
         navigateToUserManagementPage();
         List<WebElement> delete = driver.findElements(By.id("com.qolsys:id/deleteImg"));
         for (int i = 3; i > 0; i--) {

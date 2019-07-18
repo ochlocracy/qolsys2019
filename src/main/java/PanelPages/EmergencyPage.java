@@ -24,6 +24,10 @@ public class EmergencyPage {
     public WebElement Police_Silent;
     @FindBy(id = "com.qolsys:id/tv_medical_silent")
     public WebElement Auxiliary_Silent;
+    @FindBy(id = "com.qolsys:id/tv_status")
+    public WebElement Alarm_status;
+
+
 
     @FindBy(id = "com.qolsys:id/tv_img_action_text")
     public WebElement Emergency_sent_text;

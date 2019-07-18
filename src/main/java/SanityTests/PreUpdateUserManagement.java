@@ -120,7 +120,7 @@ public class PreUpdateUserManagement extends Setup{
     }
 
     public void addUser(String Name, String UserCode) throws InterruptedException {
-        UserManagementPage user_m = PageFactory.initElements(driver, UserManagementPage.class);
+        user_m = PageFactory.initElements(driver, UserManagementPage.class);
         user_m.Add_User_Name_field.sendKeys(Name);
         user_m.Add_User_Code_field.sendKeys(UserCode);
         user_m.Add_Confirm_User_Code_field.sendKeys(UserCode);

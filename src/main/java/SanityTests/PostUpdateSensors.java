@@ -192,16 +192,5 @@ public class PostUpdateSensors extends Setup{
         primaryCall(DLID, SensorsActivity.CLOSE);
         Thread.sleep(2000);
     }
-    public void alarm_verification(){
-        HomePage home = PageFactory.initElements(driver, HomePage.class);
-        try{
-            if(home.ALARM.isDisplayed()){
-                System.out.println("Pass: Alarm is displayed!");
-                enterDefaultUserCode();
-            }else{
-                System.out.println("FAIL: No ALARM event!");
-                System.exit(0);
-            }
-        }catch (NoSuchElementException e){}
-    }
+
 }
