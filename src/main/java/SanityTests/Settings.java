@@ -6,9 +6,13 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import utils.RetryAnalizer;
 import utils.SensorsActivity;
 import utils.Setup;
+
+import java.io.IOException;
 
 public class Settings extends Setup {
 
@@ -34,7 +38,13 @@ public class Settings extends Setup {
         preconditions();
     }
 
-    @Test
+    @BeforeMethod
+    public void reset() throws IOException, InterruptedException {
+        disarmServiceCall();
+        deleteFromPrimary(3);
+    }
+
+    @Test(priority =1, retryAnalyzer = RetryAnalizer.class)
     public void Settings_Test1() throws Exception {
         home = PageFactory.initElements(driver, HomePage.class);
         emergency = PageFactory.initElements(driver, EmergencyPage.class);
@@ -109,7 +119,7 @@ public class Settings extends Setup {
         Thread.sleep(2000);
     }
 
-    @Test(priority = 2)
+    @Test(priority = 2, retryAnalyzer = RetryAnalizer.class)
     public void Settings_Test2() throws InterruptedException {
         arming = PageFactory.initElements(driver, SecurityArmingPage.class);
         settings = PageFactory.initElements(driver, SettingsPage.class);
@@ -177,7 +187,7 @@ public class Settings extends Setup {
         Thread.sleep(2000);
     }
 
-    @Test(priority = 3)
+    @Test(priority = 3, retryAnalyzer = RetryAnalizer.class)
     public void Settings_Test3() throws InterruptedException {
         siren = PageFactory.initElements(driver, SirenAlarmsPage.class);
         settings = PageFactory.initElements(driver, SettingsPage.class);
@@ -243,7 +253,7 @@ public class Settings extends Setup {
         Thread.sleep(2000);
     }
 
-    @Test(priority = 4)
+    @Test(priority = 4, retryAnalyzer = RetryAnalizer.class)
     public void Settings_Test4() throws Exception {
         serv.set_ARM_STAY_NO_DELAY_enable();
         arming = PageFactory.initElements(driver, SecurityArmingPage.class);
@@ -293,7 +303,7 @@ public class Settings extends Setup {
         Thread.sleep(2000);
     }
 
-    @Test(priority = 5)
+    @Test(priority = 5, retryAnalyzer = RetryAnalizer.class)
     public void Settings_Test5() throws Exception {
         System.out.println("Settings.Auto_Bypass");
         arming = PageFactory.initElements(driver, SecurityArmingPage.class);
@@ -377,7 +387,7 @@ public class Settings extends Setup {
         Thread.sleep(2000);
     }
 
-    @Test(priority = 6)
+    @Test(priority = 6, retryAnalyzer = RetryAnalizer.class)
     public void Settings_Test6() throws Exception {
         System.out.println("Settings.Auto_Exit_Time_Extention");
         arming = PageFactory.initElements(driver, SecurityArmingPage.class);
@@ -456,7 +466,7 @@ public class Settings extends Setup {
         Thread.sleep(2000);
     }
 
-    @Test(priority = 7)
+    @Test(priority = 7, retryAnalyzer = RetryAnalizer.class)
     public void Settings_Test7() throws Exception {
         System.out.println("Settings.Auto_Stay");
         int delay = 15;
@@ -503,7 +513,7 @@ public class Settings extends Setup {
         Thread.sleep(2000);
     }
 
-    @Test(priority = 8)
+    @Test(priority = 8, retryAnalyzer = RetryAnalizer.class)
     public void Settings_Test8() throws Exception {
         System.out.println("Settings.Keyfob_Alarm_Disarm");
         String disarm = "08 01";
@@ -565,7 +575,7 @@ public class Settings extends Setup {
         Thread.sleep(2000);
     }
 
-    @Test(priority = 9)
+    @Test(priority = 9, retryAnalyzer = RetryAnalizer.class)
     public void Settings_Test9() throws Exception {
         System.out.println("Settings.Keyfob_Disarming");
         int delay = 15;
@@ -585,14 +595,14 @@ public class Settings extends Setup {
         primaryCall("65 00 AF", disarm);
         Thread.sleep(2000);
         verifySystemState("DISARMED");
-        System.out.println("Pass: system is disarmed by a keyfob from Arm Stay");
+        System.out.println("Pass: System is disarmed by a keyfob from Arm Stay");
         Thread.sleep(2000);
         ARM_AWAY(delay);
         Thread.sleep(2000);
         primaryCall("65 00 AF", disarm);
         Thread.sleep(2000);
         verifySystemState("DISARMED");
-        System.out.println("Pass: system is disarmed by a keyfob from Arm Away");
+        System.out.println("Pass: System is disarmed by a keyfob from Arm Away");
         Thread.sleep(2000);
         System.out.println("Verify that Keyfob Disarming does not work when disabled");
         navigateToAdvancedSettingsPage();
@@ -612,7 +622,7 @@ public class Settings extends Setup {
         primaryCall("65 00 AF", disarm);
         Thread.sleep(2000);
         verifySystemState("ARMED STAY");
-        System.out.println("Pass: system is NOT disarmed by a keyfob from Arm Stay");
+        System.out.println("Pass: System is NOT disarmed by a keyfob from Arm Stay");
         home.DISARM.click();
         enterDefaultUserCode();
         Thread.sleep(2000);
@@ -621,7 +631,7 @@ public class Settings extends Setup {
         primaryCall("65 00 AF", disarm);
         Thread.sleep(2000);
         verifySystemState("ARMED AWAY");
-        System.out.println("Pass: system is NOT disarmed by a keyfob from Arm Away");
+        System.out.println("Pass: System is NOT disarmed by a keyfob from Arm Away");
         home.ArwAway_State.click();
         enterDefaultUserCode();
         Thread.sleep(2000);
@@ -641,7 +651,7 @@ public class Settings extends Setup {
         Thread.sleep(2000);
     }
 
-    @Test(priority = 10)
+    @Test(priority = 10, retryAnalyzer = RetryAnalizer.class)
     public void Settings_Test10() throws Exception {
         String armstay = "04 01";
         String armaway = "04 04";
@@ -717,7 +727,7 @@ public class Settings extends Setup {
         Thread.sleep(2000);
     }
 
-    @Test(priority = 11)
+    @Test(priority = 11, retryAnalyzer = RetryAnalizer.class)
     public void Settings_Test11() throws Exception {
         System.out.println("Settings.Panic_Disable");
         SirenAlarmsPage siren = PageFactory.initElements(driver, SirenAlarmsPage.class);
@@ -794,7 +804,7 @@ public class Settings extends Setup {
         Thread.sleep(2000);
     }
 
-    @Test(priority = 12)
+    @Test(priority = 12, retryAnalyzer = RetryAnalizer.class)
     public void Settings_Test12() throws Exception {
         System.out.println("Settings.Secure_Arming");
         settings = PageFactory.initElements(driver, SettingsPage.class);
@@ -843,7 +853,8 @@ public class Settings extends Setup {
         settings.Home_button.click();
         Thread.sleep(2000);
     }
-    //
+
+
 //    @Test(priority = 17)
 //    public void Settings_Test18() throws Exception {
 //        report = new ExtentReports(projectPath + "/Report/SanityReport.html", false);

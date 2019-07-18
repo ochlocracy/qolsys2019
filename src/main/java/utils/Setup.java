@@ -79,6 +79,11 @@ public class Setup extends Driver {
         enterDefaultUserCode();
     }
 
+    public void disarmServiceCall() throws IOException {
+        String servicecall = " shell service call qservice 1 i32 0 i32 0 i32 0 i32 0 i32 0 i32 1 i32 0 i32 0 i32 1";
+        rt.exec(ConfigProps.adbPath + " " + servicecall);
+    }
+
     public void ARM_STAY() {
         HomePage home_page = PageFactory.initElements(driver, HomePage.class);
         System.out.println("Arm Stay");
