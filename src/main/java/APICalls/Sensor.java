@@ -194,22 +194,22 @@ public class Sensor {
         System.out.println(response.body().asString());
     }
 
-    @Test
-    // DANGER DON'T DELETE AN IMPORTANT SENSOR
-    public void delete_sensor() {
-        System.out.println("Starting delete_sensor...");
-
-        RestAssured.baseURI = environment.get("domain_url");
-        RequestSpecification request = RestAssured.given();
-        request.header("Authorization", "Bearer " + environment.get("access_token"));
-
-        request.pathParam("account_number", environment.get("account_number"));
-        request.pathParam("zone_id", Integer.parseInt(environment.get("srf_sensor_id")));
-
-        Response response = request.get("/panels/{account_number}/devices/sensors/{zone_id}");
-
-        System.out.println(response.body().asString());
-    }
+//    @Test
+//    // DANGER DON'T DELETE AN IMPORTANT SENSOR
+//    public void delete_sensor() {
+//        System.out.println("Starting delete_sensor...");
+//
+//        RestAssured.baseURI = environment.get("domain_url");
+//        RequestSpecification request = RestAssured.given();
+//        request.header("Authorization", "Bearer " + environment.get("access_token"));
+//
+//        request.pathParam("account_number", environment.get("account_number"));
+//        request.pathParam("zone_id", Integer.parseInt(environment.get("srf_sensor_id")));
+//
+//        Response response = request.get("/panels/{account_number}/devices/sensors/{zone_id}");
+//
+//        System.out.println(response.body().asString());
+//    }
 
     @Test
     public void srf_sensors() {
