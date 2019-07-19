@@ -23,7 +23,7 @@ public class Account {
         environment = APIEnvironment.getEnvironment();
     }
 
-    @Test
+    @Test //GET
     public void get_all_accounts() {
         System.out.println("Starting get_all_accounts...");
 
@@ -39,7 +39,7 @@ public class Account {
         System.out.println(response.body().asString());
     }
 
-    @Test
+    @Test //GET
     public void get_account_information() {
         System.out.println("Starting get_account_information...");
 
@@ -55,7 +55,7 @@ public class Account {
         System.out.println(response.body().asString());
     }
 
-    @Test
+    @Test //POST
     public void create_account() {
         environment.put("serial_number", "QV015164200952AD");
         create_account( environment.get("account_number"),
@@ -83,7 +83,7 @@ public class Account {
         System.out.println(response.body().asString());
     }
 
-    @Test
+    @Test //PUT
     public void update_account() {
         String defaultPropertyName = "first_name";
         Object defaultPropertyValue = "EvanII";
@@ -109,7 +109,7 @@ public class Account {
         System.out.println(response.body().asString());
     }
 
-    @Test
+    @Test //PUT
     public void update_account_timezone() {
         Integer defaultNewTimezone = Integer.parseInt(environment.get("time_zone"));
         update_account_timezone(defaultNewTimezone);
@@ -135,7 +135,7 @@ public class Account {
         System.out.println(response.body().asString());
     }
 
-    @Test
+    @Test //PUT
     public void update_account_status() {
         String newStatus = "active";
         update_account_status(newStatus);
@@ -161,7 +161,7 @@ public class Account {
         System.out.println(response.body().asString());
     }
 
-//    @Test
+//    @Test //DELETE
 //    //DANGER, DON'T DELETE AN IMPORTANT ACCOUNT
 //    public void delete_account() {
 //        System.out.println("Starting delete_account...");

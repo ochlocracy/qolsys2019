@@ -24,7 +24,7 @@ public class Authentication {
         environment = APIEnvironment.getEnvironment();
     }
 
-    @Test
+    @Test //POST
     public void generate_access_token() {
         System.out.println("Starting generate_access_token...");
 
@@ -47,7 +47,7 @@ public class Authentication {
 //        System.out.println("New: " + environment.get("refresh_token"));
     }
 
-    @Test
+    @Test //POST
     public void refresh_access_token() {
         System.out.println("Starting refresh_access_token...");
         RestAssured.baseURI = environment.get("domain_url");

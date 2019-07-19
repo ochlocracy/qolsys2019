@@ -24,7 +24,7 @@ public class IQ_Panel_User {
         environment = APIEnvironment.getEnvironment();
     }
 
-    @Test
+    @Test //GET
     public void get_all_users() {
         System.out.println("Starting get_all_users...");
 
@@ -39,7 +39,7 @@ public class IQ_Panel_User {
         System.out.println(response.body().asString());
     }
 
-    @Test
+    @Test //GET
     public void get_user() {
         System.out.println("Starting get_users...");
 
@@ -55,7 +55,7 @@ public class IQ_Panel_User {
         System.out.println(response.body().asString());
     }
 
-    @Test
+    @Test //GET
     public void get_user_property() {
         String defaultProperty = "user_name";
         get_user_property(defaultProperty);
@@ -77,7 +77,7 @@ public class IQ_Panel_User {
         System.out.println(response.body().asString());
     }
 
-//    @Test
+//    @Test //POST
 //    //DANGER (maybe)
 //    public void create_user() {
 //        Integer newUserId = 1;
@@ -104,7 +104,7 @@ public class IQ_Panel_User {
 //        System.out.println(response.body().asString());
 //    }
 
-    @Test
+    @Test //PUT
     public void update_user() {
         String defaultProperty = "user_name";
         Object propertyValue = "EvanII";

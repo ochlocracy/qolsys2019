@@ -24,7 +24,7 @@ public class IQ_Panel {
         environment = APIEnvironment.getEnvironment();
     }
 
-    @Test
+    @Test //GET
     public void get_all_iqpanels() {
         System.out.println("Starting get_all_iq_panels...");
 
@@ -40,7 +40,7 @@ public class IQ_Panel {
         System.out.println(response.body().asString());
     }
 
-    @Test
+    @Test //GET
     public void get_iqpanel_information() {
         System.out.println("Starting get_iqpanel_information...");
 
@@ -55,7 +55,7 @@ public class IQ_Panel {
         System.out.println(response.body().asString());
     }
 
-    @Test
+    @Test //GET
     public void get_iqpanels_property() {
         String defaultProperty = "connection_status";
         get_iqpanels_property(defaultProperty);
@@ -76,7 +76,7 @@ public class IQ_Panel {
         System.out.println(response.body().asString());
     }
 
-    @Test
+    @Test //GET
     public void get_iqpanels_arm_status() {
         System.out.println("Starting get_iqpanels_arm_status...");
 
@@ -91,7 +91,7 @@ public class IQ_Panel {
         System.out.println(response.body().asString());
     }
 
-    @Test
+    @Test //GET
     public void get_iqpanels_partition_arm_status() {
         System.out.println("Starting get_iqpanels_partition_arm_status...");
 
@@ -107,7 +107,7 @@ public class IQ_Panel {
         System.out.println(response.body().asString());
     }
 
-    @Test
+    @Test //PUT
     public void set_iqpanels_partition_arm_status() {
         String defaultArmStatus = "arm_stay";
         set_iqpanels_partition_arm_status(defaultArmStatus);
@@ -132,7 +132,7 @@ public class IQ_Panel {
         System.out.println(response.body().asString());
     }
 
-    @Test
+    @Test //GET
     public void get_all_iqpanel_settings() {
         System.out.println("Starting get_all_iqpanel_settings...");
 
@@ -147,7 +147,7 @@ public class IQ_Panel {
         System.out.println(response.body().asString());
     }
 
-    @Test
+    @Test //GET
     public void get_iqpanels_setting() {
         String defaultSetting = "font_size";
         get_iqpanels_setting(defaultSetting);
@@ -168,7 +168,7 @@ public class IQ_Panel {
         System.out.println(response.body().asString());
     }
 
-    @Test
+    @Test //PUT
     public void update_iqpanel_setting() {
         String defaultSettingName = "alarm_photos";
         Object defaultSettingValue = true;

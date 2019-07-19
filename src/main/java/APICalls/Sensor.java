@@ -24,7 +24,7 @@ public class Sensor {
         environment = APIEnvironment.getEnvironment();
     }
 
-    @Test
+    @Test //GET
     public void get_all_sensors() {
         System.out.println("Starting get_all_sensors...");
 
@@ -39,7 +39,7 @@ public class Sensor {
         System.out.println(response.body().asString());
     }
 
-    @Test
+    @Test //GET
     public void get_sensor() {
         System.out.println("Starting get_sensor...");
 
@@ -55,7 +55,7 @@ public class Sensor {
         System.out.println(response.body().asString());
     }
 
-    @Test
+    @Test //GET
     public void get_sensor_property() {
         String defaultProperty = "sensor_name";
         get_sensor_property(defaultProperty);
@@ -76,7 +76,7 @@ public class Sensor {
         System.out.println(response.body().asString());
     }
 
-    @Test
+    @Test //POST
     public void learn_sensor() {
         System.out.println("Starting learn_sensor...");
 
@@ -92,7 +92,7 @@ public class Sensor {
         System.out.println(response.body().asString());
     }
 
-    @Test
+    @Test //GET
     public void learn_sensor_poll_result() {
         System.out.println("Starting learn_sensor_poll_result...");
 
@@ -108,7 +108,7 @@ public class Sensor {
         System.out.println(response.body().asString());
     }
 
-    @Test
+    @Test //POST
     public void add_sensor() {
         //Default values
         Integer zoneId = Integer.parseInt(environment.get("srf_sensor_id"));
@@ -150,7 +150,7 @@ public class Sensor {
         System.out.println(response.body().asString());
     }
 
-//    @Test
+//    @Test //POST
 //    public void sensor_test() {
 //        System.out.println("Starting sensor_test...");
 //
@@ -167,7 +167,7 @@ public class Sensor {
 //        System.out.println(response.body().asString());
 //    }
 
-    @Test
+    @Test //PUT
     public void update_sensor() {
         String propertyName = "sensor_name";
         Object propertyValue = "Smoke Detector 69";
@@ -194,7 +194,7 @@ public class Sensor {
         System.out.println(response.body().asString());
     }
 
-//    @Test
+//    @Test //DELETE
 //    // DANGER DON'T DELETE AN IMPORTANT SENSOR
 //    public void delete_sensor() {
 //        System.out.println("Starting delete_sensor...");
@@ -211,7 +211,7 @@ public class Sensor {
 //        System.out.println(response.body().asString());
 //    }
 
-    @Test
+    @Test //GET
     public void srf_sensors() {
         System.out.println("Starting srf_sensors...");
 
@@ -226,7 +226,7 @@ public class Sensor {
         System.out.println(response.body().asString());
     }
 
-    @Test
+    @Test //GET
     public void powerg_sensors() {
         System.out.println("Starting powerg_sensors...");
 
