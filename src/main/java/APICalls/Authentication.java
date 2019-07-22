@@ -1,6 +1,7 @@
 package APICalls;
 
 import io.restassured.RestAssured;
+import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import org.json.JSONObject;
@@ -14,12 +15,16 @@ public class Authentication {
 
     private Map<String, String> environment;
 
+    public Authentication() {
+        init();
+    }
+
     @BeforeTest
     public void init() {
         environment = APIEnvironment.getEnvironment();
     }
 
-    @Test
+    @Test //POST
     public void generate_access_token() {
         System.out.println("Starting generate_access_token...");
 
@@ -36,10 +41,13 @@ public class Authentication {
 
         System.out.println(response.body().asString());
 
-        //edit refresh token
+//        System.out.println("Original: " + environment.get("refresh_token"));
+        JsonPath pathEvaluator = response.jsonPath();
+        environment.put("refresh_token", pathEvaluator.get("refresh_token").toString());
+//        System.out.println("New: " + environment.get("refresh_token"));
     }
 
-    @Test
+    @Test //POST
     public void refresh_access_token() {
         System.out.println("Starting refresh_access_token...");
         RestAssured.baseURI = environment.get("domain_url");
@@ -54,7 +62,8 @@ public class Authentication {
 
         System.out.println(response.body().asString());
 
-        //edit refresh token
+        JsonPath pathEvaluator = response.jsonPath();
+        environment.put("refresh_token", pathEvaluator.get("refresh_token").toString());
     }
 
 }
