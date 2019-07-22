@@ -17,10 +17,16 @@ public class Account {
     public Account() {
         init();
     }
+    public Account(Map<String, String> environment) {
+        init(environment);
+    }
 
     @BeforeTest
     public void init() {
-        environment = APIEnvironment.getEnvironment();
+        init(APIEnvironment.getEnvironment());
+    }
+    public void init(Map<String, String> environment) {
+        this.environment = environment;
     }
 
     @Test //GET

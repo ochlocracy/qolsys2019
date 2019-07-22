@@ -18,12 +18,17 @@ public class IQ_Panel {
     public IQ_Panel() {
         init();
     }
+    public IQ_Panel(Map<String, String> environment) {
+        init(environment);
+    }
 
     @BeforeTest
     public void init() {
-        environment = APIEnvironment.getEnvironment();
+        init(APIEnvironment.getEnvironment());
     }
-
+    public void init(Map<String, String> environment) {
+        this.environment = environment;
+    }
     @Test //GET
     public void get_all_iqpanels() {
         System.out.println("Starting get_all_iq_panels...");

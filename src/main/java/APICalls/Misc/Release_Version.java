@@ -19,10 +19,16 @@ public class Release_Version {
     public Release_Version() {
         init();
     }
+    public Release_Version(Map<String, String> environment) {
+        init(environment);
+    }
 
     @BeforeTest
     public void init() {
-        environment = APIEnvironment.getEnvironment();
+        init(APIEnvironment.getEnvironment());
+    }
+    public void init(Map<String, String> environment) {
+        this.environment = environment;
     }
 
     @Test //GET

@@ -18,10 +18,16 @@ public class Event_History {
     public Event_History() {
         init();
     }
+    public Event_History(Map<String, String> environment) {
+        init(environment);
+    }
 
     @BeforeTest
     public void init() {
-        environment = APIEnvironment.getEnvironment();
+        init(APIEnvironment.getEnvironment());
+    }
+    public void init(Map<String, String> environment) {
+        this.environment = environment;
     }
 
     @Test //GET

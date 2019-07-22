@@ -19,10 +19,16 @@ public class Panel_Acceptance_Test {
     public Panel_Acceptance_Test() {
         init();
     }
+    public Panel_Acceptance_Test(Map<String, String> environment) {
+        init(environment);
+    }
 
     @BeforeTest
     public void init() {
-        environment = APIEnvironment.getEnvironment();
+        init(APIEnvironment.getEnvironment());
+    }
+    public void init(Map<String, String> environment) {
+        this.environment = environment;
     }
 
     @Test //POST

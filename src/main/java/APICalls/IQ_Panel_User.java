@@ -18,10 +18,16 @@ public class IQ_Panel_User {
     public IQ_Panel_User() {
         init();
     }
+    public IQ_Panel_User(Map<String, String> environment) {
+        init(environment);
+    }
 
     @BeforeTest
     public void init() {
-        environment = APIEnvironment.getEnvironment();
+        init(APIEnvironment.getEnvironment());
+    }
+    public void init(Map<String, String> environment) {
+        this.environment = environment;
     }
 
     @Test //GET

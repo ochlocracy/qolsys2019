@@ -18,10 +18,16 @@ public class Home_Automation_Devices {
     public Home_Automation_Devices() {
         init();
     }
+    public Home_Automation_Devices(Map<String, String> environment) {
+        init(environment);
+    }
 
     @BeforeTest
     public void init() {
-        environment = APIEnvironment.getEnvironment();
+        init(APIEnvironment.getEnvironment());
+    }
+    public void init(Map<String, String> environment) {
+        this.environment = environment;
     }
 
     @Test //POST

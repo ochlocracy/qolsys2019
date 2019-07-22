@@ -18,10 +18,16 @@ public class IQ_Remote {
     public IQ_Remote() {
         init();
     }
+    public IQ_Remote(Map<String, String> environment) {
+        init(environment);
+    }
 
     @BeforeTest
     public void init() {
-        environment = APIEnvironment.getEnvironment();
+        init(APIEnvironment.getEnvironment());
+    }
+    public void init(Map<String, String> environment) {
+        this.environment = environment;
     }
 
     @Test //GET
