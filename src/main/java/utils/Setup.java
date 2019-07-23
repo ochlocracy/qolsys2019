@@ -17,6 +17,7 @@ public class Setup extends Driver {
     SlideMenu menu;
     SettingsPage settings;
     AdvancedSettingsPage advanced;
+    public String projectPath = new String(System.getProperty("user.dir"));
 
     public Setup() throws Exception {
         ConfigProps.init();
