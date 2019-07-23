@@ -2,9 +2,7 @@ package SanityTests;
 
 import PanelPages.Lights;
 import org.apache.commons.io.FileUtils;
-import org.openqa.selenium.By;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -33,27 +31,17 @@ public class ZwaveLight extends Setup {
     @Test
     public void Test1() throws Exception {
         Lights lights = PageFactory.initElements(driver, Lights.class);
-        File light_on = new File(projectPath + "/screen_shot/light_on");
-        File light_off = new File(projectPath + "/screen_shot/light_off");
+        File LightOnIconImg = new File(projectPath + "/screen_shot/LightOnIconImg");
+        File LightOffIconImg = new File(projectPath + "/screen_shot/LightOffIconImg");
         swipeLeft();
-        List<WebElement> li = driver.findElements(By.id("com.qolsys:id/lightSelect"));
-        List<WebElement> status = driver.findElements(By.id("com.qolsys:id/statusButton"));
+        WebElement ele = driver.findElement(By.id("com.qolsys:id/statusButton"));
 
-        File screenshot = driver.getScreenshotAs(OutputType.FILE);
-        File screenshotLocation = new File(projectPath + "/screen_shot/test");
-        FileUtils.copyFile(screenshot, screenshotLocation);
-
-
-        swipeFromRighttoLeft();
-        // check if light can be turned on
         lights.Light_status.click();
-        Thread.sleep(6000);
-
-        // check if light icon turns yellow
-        if (!checkStatus(light_on, status.get(0)))
-            return;
-
-        getLightStatus();
+        Thread.sleep(3000);
+        checkStatus(LightOnIconImg, ele);
+        lights.Light_status.click();
+        Thread.sleep(3000);
+        checkStatus(LightOffIconImg, ele);
 
     }
 
@@ -62,29 +50,14 @@ public class ZwaveLight extends Setup {
         quitDriver();
     }
 
-    public boolean getLightStatus() throws Exception {
-        Lights lights = PageFactory.initElements(driver, Lights.class);
-        File LightOnIconImg = new File(projectPath + "/screen_shot/LightOnIconImg");
-        File LightOffIconImg = new File(projectPath + "/screen_shot/LightOffIconImg");
-        String onStatus = /* lightName +*/ " Light is ON";
-        String offStatus = /*lightName +*/  " Light is Off";
-        boolean lightONStatus = checkStatus(LightOnIconImg, lights.Light_status);
-        boolean lightOffStatus = checkStatus(LightOffIconImg, lights.Light_status);
-        if (checkStatus(LightOnIconImg, lights.Light_status)) {
-            System.out.println(onStatus);
-            return lightONStatus;
-        } else {
-            System.out.println(offStatus);
-            return lightOffStatus;
-        }
-    }
-
+    //compare actual light status to expected using screenshot comparison
     public boolean checkStatus(File cmp, WebElement ele) throws Exception {
-        File tmp = takeScreenshot(ele, projectPath + "/screen_shot/tmp");
-        Thread.sleep(2000);
+        File tmp = takeScreenshot(ele);
+        Thread.sleep(10000);
+
         if (compareImage(tmp, cmp)) {
             System.out.println("Pass: light icon is the expected color");
-            java.lang.Runtime.getRuntime().exec("rm -f " + tmp.getAbsolutePath());
+          java.lang.Runtime.getRuntime().exec("rm -f " + tmp.getAbsolutePath());
             return true;
         } else {
             System.out.println("Fail: light icon is not the expected color");
@@ -92,31 +65,29 @@ public class ZwaveLight extends Setup {
             return false;
         }
     }
-
     //takes a screenshot of the given element and saves it to the given destination
-    public File takeScreenshot(WebElement ele, String dst) throws Exception {
+    public File takeScreenshot(WebElement ele) throws Exception {
         // Get entire page screenshot
-        File screenshot = driver.getScreenshotAs(OutputType.FILE);
-        BufferedImage fullImg = ImageIO.read(screenshot);
+        File screenshot = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+        BufferedImage  fullImg = ImageIO.read(screenshot);
 
         // Get the location of element on the page
-        org.openqa.selenium.Point point = ele.getLocation();
+        Point point = ele.getLocation();
 
         // Get width and height of the element
         int eleWidth = ele.getSize().getWidth();
         int eleHeight = ele.getSize().getHeight();
 
         // Crop the entire page screenshot to get only element screenshot
-        BufferedImage eleScreenshot = fullImg.getSubimage(point.getX(), point.getY(), eleWidth, eleHeight);
+        BufferedImage eleScreenshot= fullImg.getSubimage(point.getX(), point.getY(),
+                eleWidth, eleHeight);
         ImageIO.write(eleScreenshot, "png", screenshot);
 
         // Copy the element screenshot to disk
-        File screenshotLocation = new File(dst);
+        File screenshotLocation = new File(projectPath + "/screen_shot/test");
         FileUtils.copyFile(screenshot, screenshotLocation);
-
-        return screenshotLocation;
+        return  screenshotLocation;
     }
-
     //compares two images and returns whether or not they're identical
     public boolean compareImage(File fileA, File fileB) {
         try {
