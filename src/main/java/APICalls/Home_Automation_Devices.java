@@ -31,11 +31,14 @@ public class Home_Automation_Devices {
     }
 
     @Test //POST
-    public void set_learn_mode_on_off() {
-        Boolean defaultIsOn = true;
-        set_learn_mode_on_off(defaultIsOn);
+    public void test_set_learn_mode_on_off() {
+        set_learn_mode_on_off();
     }
-    public void set_learn_mode_on_off(Boolean isOn) {
+    public Response set_learn_mode_on_off() {
+        Boolean defaultIsOn = true;
+        return set_learn_mode_on_off(defaultIsOn);
+    }
+    public Response set_learn_mode_on_off(Boolean isOn) {
         System.out.println("Starting set_learn_mode_on_off...");
 
         RestAssured.baseURI = environment.get("domain_url");
@@ -53,14 +56,19 @@ public class Home_Automation_Devices {
         Response response = request.post("/panels/{account_number}/devices/homeautomation/learn");
 
         System.out.println(response.body().asString());
+
+        return response;
     }
 
     @Test //POST
-    public void set_delete_mode_on_off() {
-        Boolean defaultIsOn = true;
-        set_delete_mode_on_off(defaultIsOn);
+    public void test_set_delete_mode_on_off() {
+        set_delete_mode_on_off();
     }
-    public void set_delete_mode_on_off(Boolean isOn) {
+    public Response set_delete_mode_on_off() {
+        Boolean defaultIsOn = true;
+        return set_delete_mode_on_off(defaultIsOn);
+    }
+    public Response set_delete_mode_on_off(Boolean isOn) {
         System.out.println("Starting set_delete_mode_on_off...");
 
         RestAssured.baseURI = environment.get("domain_url");
@@ -78,10 +86,15 @@ public class Home_Automation_Devices {
         Response response = request.post("/panels/{account_number}/devices/homeautomation/clear");
 
         System.out.println(response.body().asString());
+
+        return response;
     }
 
     @Test //GET
-    public void get_all_home_automation_devices() {
+    public void test_get_all_home_automation_devices() {
+        get_all_home_automation_devices();
+    }
+    public Response get_all_home_automation_devices() {
         System.out.println("Starting get_all_home_automation_devices...");
 
         RestAssured.baseURI = environment.get("domain_url");
@@ -93,14 +106,19 @@ public class Home_Automation_Devices {
         Response response = request.get("/panels/{account_number}/devices/homeautomation");
 
         System.out.println(response.body().asString());
+
+        return response;
     }
 
     @Test //GET
-    public void get_home_automation_device() {
-        Integer defaultDeviceId = 2;
-        get_home_automation_device(defaultDeviceId);
+    public void test_get_home_automation_device() {
+        get_home_automation_device();
     }
-    public void get_home_automation_device(Integer deviceId) {
+    public Response get_home_automation_device() {
+        Integer defaultDeviceId = 2;
+        return get_home_automation_device(defaultDeviceId);
+    }
+    public Response get_home_automation_device(Integer deviceId) {
         System.out.println("Starting get_home_automation_device...");
 
         RestAssured.baseURI = environment.get("domain_url");
@@ -113,15 +131,20 @@ public class Home_Automation_Devices {
         Response response = request.get("/panels/{account_number}/devices/homeautomation/{device_id}");
 
         System.out.println(response.body().asString());
+
+        return response;
     }
 
     @Test //GET
-    public void get_home_automation_device_property() {
+    public void test_get_home_automation_device_property() {
+        get_home_automation_device_property();
+    }
+    public Response get_home_automation_device_property() {
         String defaultDeviceId = environment.get("device_id_thermo");
         String defaultPropertyName = "battery_status";
-        get_home_automation_device_property(defaultDeviceId, defaultPropertyName);
+        return get_home_automation_device_property(defaultDeviceId, defaultPropertyName);
     }
-    public void get_home_automation_device_property(String deviceId, String propertyName) {
+    public Response get_home_automation_device_property(String deviceId, String propertyName) {
         System.out.println("Starting get_home_automation_device_property...");
 
         RestAssured.baseURI = environment.get("domain_url");
@@ -135,16 +158,21 @@ public class Home_Automation_Devices {
         Response response = request.get("/panels/{account_number}/devices/homeautomation/{device_id}/{property_name}");
 
         System.out.println(response.body().asString());
+
+        return response;
     }
 
     @Test //GET
-    public void update_home_automation_device() {
+    public void test_update_home_automation_device() {
+        update_home_automation_device();
+    }
+    public Response update_home_automation_device() {
         String defaultDeviceId = environment.get("device_id_thermo");
         String defaultDevicePropertyName = "mode";
         Object defaultDevicePropertyValue = "cool";
-        update_home_automation_device(defaultDeviceId, defaultDevicePropertyName, defaultDevicePropertyValue);
+        return update_home_automation_device(defaultDeviceId, defaultDevicePropertyName, defaultDevicePropertyValue);
     }
-    public void update_home_automation_device(String deviceId, String propertyName, Object propertyValue) {
+    public Response update_home_automation_device(String deviceId, String propertyName, Object propertyValue) {
         System.out.println("Starting set_delete_mode_on_off...");
 
         RestAssured.baseURI = environment.get("domain_url");
@@ -163,17 +191,22 @@ public class Home_Automation_Devices {
         Response response = request.put("/panels/{account_number}/devices/homeautomation/{device_id}");
 
         System.out.println(response.body().asString());
+
+        return response;
     }
 
     //The rest of these tests are undocumented
     //UNDOCUMENTED
     @Test //GET
-    public void get_all_devices_of_type() {
+    public void test_get_all_devices_of_type() {
+        get_all_devices_of_type();
+    }
+    public Response get_all_devices_of_type() {
         //can be 'thermostats' 'doorlocks' 'lights' 'dimmers' or 'smartsockets'
         String defaultType = "thermostats";
-        get_all_devices_of_type(defaultType);
+        return get_all_devices_of_type(defaultType);
     }
-    public void get_all_devices_of_type(String type) {
+    public Response get_all_devices_of_type(String type) {
         System.out.println("Starting get_all_devices_of_type...");
 
         RestAssured.baseURI = environment.get("domain_url");
@@ -186,15 +219,20 @@ public class Home_Automation_Devices {
         Response response = request.get("/panels/{account_number}/devices/{type}");
 
         System.out.println(response.body().asString());
+
+        return response;
     }
     //UNDOCUMENTED
     @Test //GET
-    public void get_device_of_type() {
+    public void test_get_device_of_type() {
+        get_device_of_type();
+    }
+    public Response get_device_of_type() {
         String defaultType = "thermostats";
         String defaultDeviceId = environment.get("device_id_thermo");
-        get_device_of_type(defaultType, defaultDeviceId);
+        return get_device_of_type(defaultType, defaultDeviceId);
     }
-    public void get_device_of_type(String type, String deviceId) {
+    public Response get_device_of_type(String type, String deviceId) {
         System.out.println("Starting get_device_of_type...");
 
         RestAssured.baseURI = environment.get("domain_url");
@@ -208,15 +246,20 @@ public class Home_Automation_Devices {
         Response response = request.get("/panels/{account_number}/devices/{type}/{device_id}");
 
         System.out.println(response.body().asString());
+
+        return response;
     }
     //UNDOCUMENTED
     @Test //POST
-    public void execute_raw_comands() {
+    public void test_execute_raw_commands() {
+        execute_raw_comands();
+    }
+    public Response execute_raw_comands() {
         String defaultDeviceId = environment.get("device_id_lock");
         String defaultCommand = "620001";
-        execute_raw_commands(defaultDeviceId, defaultCommand);
+        return execute_raw_commands(defaultDeviceId, defaultCommand);
     }
-    public void execute_raw_commands(String deviceId, String command) {
+    public Response execute_raw_commands(String deviceId, String command) {
         System.out.println("Starting execute_raw_commands...");
 
         RestAssured.baseURI = environment.get("domain_url");
@@ -235,5 +278,7 @@ public class Home_Automation_Devices {
         Response response = request.post("/panels/{account_number}/devices/homeautomation/{device_id}/commands");
 
         System.out.println(response.body().asString());
+
+        return response;
     }
 }

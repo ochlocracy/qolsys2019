@@ -32,7 +32,10 @@ public class Release_Version {
     }
 
     @Test //GET
-    public void get_iqcloud_version() {
+    public void test_get_iqcloud_version() {
+        get_iqcloud_version();
+    }
+    public Response get_iqcloud_version() {
         System.out.println("Starting get_iqcloud_version...");
         RestAssured.baseURI = environment.get("domain_url");
         RequestSpecification request = RestAssured.given();
@@ -41,5 +44,7 @@ public class Release_Version {
         Response response = request.get("/version");
 
         System.out.println(response.body().asString());
+
+        return response;
     }
 }

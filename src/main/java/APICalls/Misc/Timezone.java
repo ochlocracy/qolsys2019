@@ -32,7 +32,10 @@ public class Timezone {
     }
 
     @Test //GET
-    public void get_all_timezones() {
+    public void test_get_all_timezones() {
+        get_all_timezones();
+    }
+    public Response get_all_timezones() {
         System.out.println("Starting get_sensor_events...");
 
         RestAssured.baseURI = environment.get("domain_url");
@@ -42,10 +45,15 @@ public class Timezone {
         Response response = request.get("/timezones");
 
         System.out.println(response.body().asString());
+
+        return response;
     }
 
     @Test //GET
-    public void get_timezone_information() {
+    public void test_get_timezone_information() {
+        get_timezone_information();
+    }
+    public Response get_timezone_information() {
         System.out.println("Starting get_timezone_information...");
 
         RestAssured.baseURI = environment.get("domain_url");
@@ -57,5 +65,7 @@ public class Timezone {
         Response response = request.get("/timezones/{timezone_id}");
 
         System.out.println(response.body().asString());
+
+        return response;
     }
 }

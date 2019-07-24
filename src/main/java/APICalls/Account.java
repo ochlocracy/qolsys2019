@@ -30,7 +30,10 @@ public class Account {
     }
 
     @Test //GET
-    public void get_all_accounts() {
+    public void test_get_all_accounts() {
+        get_all_accounts();
+    }
+    public Response get_all_accounts() {
         System.out.println("Starting get_all_accounts...");
 
         RestAssured.baseURI = environment.get("domain_url");
@@ -43,10 +46,15 @@ public class Account {
         Response response = request.get("/accounts");
 
         System.out.println(response.body().asString());
+
+        return response;
     }
 
     @Test //GET
-    public void get_account_information() {
+    public void test_get_account_information() {
+        get_account_information();
+    }
+    public Response get_account_information() {
         System.out.println("Starting get_account_information...");
 
         RestAssured.baseURI = environment.get("domain_url");
@@ -59,16 +67,21 @@ public class Account {
         Response response = request.get("/accounts/{account_number}");
 
         System.out.println(response.body().asString());
+
+        return response;
     }
 
     @Test //POST
-    public void create_account() {
+    public void test_create_account() {
+        create_account();
+    }
+    public Response create_account() {
         environment.put("serial_number", "QV015164200952AD");
-        create_account( environment.get("account_number"),
+        return create_account( environment.get("account_number"),
                         environment.get("serial_number"),
                         Integer.parseInt(environment.get("time_zone")));
     }
-    public void create_account(String accountNumber, String serialNumber, Integer timezone) {
+    public Response create_account(String accountNumber, String serialNumber, Integer timezone) {
         System.out.println("Starting create_account...");
 
         RestAssured.baseURI = environment.get("domain_url");
@@ -87,15 +100,20 @@ public class Account {
         Response response = request.post("/accounts");
 
         System.out.println(response.body().asString());
+
+        return response;
     }
 
     @Test //PUT
-    public void update_account() {
+    public void test_update_account() {
+        update_account();
+    }
+    public Response update_account() {
         String defaultPropertyName = "first_name";
         Object defaultPropertyValue = "EvanII";
-        update_account(defaultPropertyName, defaultPropertyValue);
+        return update_account(defaultPropertyName, defaultPropertyValue);
     }
-    public void update_account(String propertyName, Object propertyValue) {
+    public Response update_account(String propertyName, Object propertyValue) {
         System.out.println("Starting update_account...");
 
         RestAssured.baseURI = environment.get("domain_url");
@@ -113,14 +131,19 @@ public class Account {
         Response response = request.put("/accounts/{account_number}");
 
         System.out.println(response.body().asString());
+
+        return response;
     }
 
     @Test //PUT
-    public void update_account_timezone() {
-        Integer defaultNewTimezone = Integer.parseInt(environment.get("time_zone"));
-        update_account_timezone(defaultNewTimezone);
+    public void test_update_account_timezone() {
+        update_account_timezone();
     }
-    public void update_account_timezone(Integer newTimeZone) {
+    public Response update_account_timezone() {
+        Integer defaultNewTimezone = Integer.parseInt(environment.get("time_zone"));
+        return update_account_timezone(defaultNewTimezone);
+    }
+    public Response update_account_timezone(Integer newTimeZone) {
         System.out.println("Starting update_account_timezone...");
 
         RestAssured.baseURI = environment.get("domain_url");
@@ -139,14 +162,19 @@ public class Account {
         Response response = request.put("/accounts/{account_number}/timezone");
 
         System.out.println(response.body().asString());
+
+        return response;
     }
 
     @Test //PUT
-    public void update_account_status() {
-        String newStatus = "active";
-        update_account_status(newStatus);
+    public void test_update_account_status() {
+        update_account_status();
     }
-    public void update_account_status(String newAccountStatus) {
+    public Response update_account_status() {
+        String newStatus = "active";
+        return update_account_status(newStatus);
+    }
+    public Response update_account_status(String newAccountStatus) {
         System.out.println("Starting update_account_status...");
 
         RestAssured.baseURI = environment.get("domain_url");
@@ -165,11 +193,16 @@ public class Account {
         Response response = request.put("/accounts/{account_number}/status");
 
         System.out.println(response.body().asString());
+
+        return response;
     }
 
 //    @Test //DELETE
 //    //DANGER, DON'T DELETE AN IMPORTANT ACCOUNT
-//    public void delete_account() {
+//    public void test_delete_account() {
+//        delete_account();
+//    }
+//    public Response delete_account() {
 //        System.out.println("Starting delete_account...");
 //
 //        RestAssured.baseURI = environment.get("domain_url");
@@ -183,5 +216,7 @@ public class Account {
 //        Response response = request.put("/accounts/{account_number}/status");
 //
 //        System.out.println(response.body().asString());
+//
+//        return response;
 //    }
 }

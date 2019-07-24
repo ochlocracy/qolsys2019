@@ -11,7 +11,6 @@ import org.testng.annotations.Test;
 
 import java.util.Map;
 
-
 public class Authentication {
 
     private Map<String, String> environment;
@@ -31,8 +30,20 @@ public class Authentication {
         this.environment = environment;
     }
 
+
+//    @Test
+//    public void test() {
+//        System.out.println(get_PARTITION);
+//    }
+
+
+
     @Test //POST
-    public void generate_access_token() {
+    public void test_generate_access_token() {
+        generate_access_token();
+        refresh_access_token();
+    }
+    public Response generate_access_token() {
         System.out.println("Starting generate_access_token...");
 
         RestAssured.baseURI = environment.get("domain_url");
@@ -52,10 +63,15 @@ public class Authentication {
         JsonPath pathEvaluator = response.jsonPath();
         environment.put("refresh_token", pathEvaluator.get("refresh_token").toString());
 //        System.out.println("New: " + environment.get("refresh_token"));
+
+        return response;
     }
 
     @Test //POST
-    public void refresh_access_token() {
+    public void test_refresh_access_token() {
+        refresh_access_token();
+    }
+    public Response refresh_access_token() {
         System.out.println("Starting refresh_access_token...");
         RestAssured.baseURI = environment.get("domain_url");
         RequestSpecification request = RestAssured.given();
@@ -71,6 +87,8 @@ public class Authentication {
 
         JsonPath pathEvaluator = response.jsonPath();
         environment.put("refresh_token", pathEvaluator.get("refresh_token").toString());
+
+        return response;
     }
 
 }

@@ -32,7 +32,10 @@ public class Panel_Software_Upgrades {
     }
 
     @Test //POST
-    public void single_updgrade() {
+    public void test_single_upgrade() {
+        single_upgrade();
+    }
+    public Response single_upgrade() {
         System.out.println("Starting single_updgrade...");
         RestAssured.baseURI = environment.get("domain_url");
         RequestSpecification request = RestAssured.given();
@@ -44,6 +47,8 @@ public class Panel_Software_Upgrades {
         Response response = request.post("/panels/{account_number}/upgrades");
 
         System.out.println(response.body().asString());
+
+        return response;
     }
 
 }

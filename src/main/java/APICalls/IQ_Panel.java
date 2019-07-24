@@ -29,8 +29,12 @@ public class IQ_Panel {
     public void init(Map<String, String> environment) {
         this.environment = environment;
     }
+
     @Test //GET
-    public void get_all_iqpanels() {
+    public void test_get_all_iqpanels() {
+        get_all_iqpanels();
+    }
+    public Response get_all_iqpanels() {
         System.out.println("Starting get_all_iq_panels...");
 
         RestAssured.baseURI = environment.get("domain_url");
@@ -43,10 +47,15 @@ public class IQ_Panel {
         Response response = request.get("/panels");
 
         System.out.println(response.body().asString());
+
+        return response;
     }
 
     @Test //GET
-    public void get_iqpanel_information() {
+    public void test_get_iqpanel_information() {
+        get_iqpanel_information();
+    }
+    public Response get_iqpanel_information() {
         System.out.println("Starting get_iqpanel_information...");
 
         RestAssured.baseURI = environment.get("domain_url");
@@ -58,14 +67,19 @@ public class IQ_Panel {
         Response response = request.get("/panels/{account_number}");
 
         System.out.println(response.body().asString());
+
+        return response;
     }
 
     @Test //GET
-    public void get_iqpanels_property() {
-        String defaultProperty = "connection_status";
-        get_iqpanels_property(defaultProperty);
+    public void test_get_iqpanels_property() {
+        get_iqpanels_property();
     }
-    public void get_iqpanels_property(String propertyName) {
+    public Response get_iqpanels_property() {
+        String defaultProperty = "connection_status";
+        return get_iqpanels_property(defaultProperty);
+    }
+    public Response get_iqpanels_property(String propertyName) {
 
         System.out.println("Starting get_iqpanels_property("+propertyName+")...");
 
@@ -79,10 +93,15 @@ public class IQ_Panel {
         Response response = request.get("/panels/{account_number}/{property_name}");
 
         System.out.println(response.body().asString());
+
+        return response;
     }
 
     @Test //GET
-    public void get_iqpanels_arm_status() {
+    public void test_get_iqpanels_arm_status() {
+        get_iqpanels_arm_status();
+    }
+    public Response get_iqpanels_arm_status() {
         System.out.println("Starting get_iqpanels_arm_status...");
 
         RestAssured.baseURI = environment.get("domain_url");
@@ -94,10 +113,15 @@ public class IQ_Panel {
         Response response = request.get("/panels/{account_number}/status");
 
         System.out.println(response.body().asString());
+
+        return response;
     }
 
     @Test //GET
-    public void get_iqpanels_partition_arm_status() {
+    public void test_get_iqpanels_partition_arm_status() {
+        get_iqpanels_partition_arm_status();
+    }
+    public Response get_iqpanels_partition_arm_status() {
         System.out.println("Starting get_iqpanels_partition_arm_status...");
 
         RestAssured.baseURI = environment.get("domain_url");
@@ -110,14 +134,19 @@ public class IQ_Panel {
         Response response = request.get("/panels/{account_number}/status/{partition_id}");
 
         System.out.println(response.body().asString());
+
+        return response;
     }
 
     @Test //PUT
-    public void set_iqpanels_partition_arm_status() {
-        String defaultArmStatus = "arm_stay";
-        set_iqpanels_partition_arm_status(defaultArmStatus);
+    public void test_set_iqpanels_partition_arm_status() {
+        set_iqpanels_partition_arm_status();
     }
-    public void set_iqpanels_partition_arm_status(String newArmStatus) {
+    public Response set_iqpanels_partition_arm_status() {
+        String defaultArmStatus = "arm_stay";
+        return set_iqpanels_partition_arm_status(defaultArmStatus);
+    }
+    public Response set_iqpanels_partition_arm_status(String newArmStatus) {
         System.out.println("Starting set_iqpanels_partition_arm_status("+newArmStatus+")...");
 
         RestAssured.baseURI = environment.get("domain_url");
@@ -135,10 +164,15 @@ public class IQ_Panel {
         Response response = request.put("/panels/{account_number}/status/{partition_id}");
 
         System.out.println(response.body().asString());
+
+        return response;
     }
 
     @Test //GET
-    public void get_all_iqpanel_settings() {
+    public void test_get_all_iqpanel_settings() {
+        get_all_iqpanel_settings();
+    }
+    public Response get_all_iqpanel_settings() {
         System.out.println("Starting get_all_iqpanel_settings...");
 
         RestAssured.baseURI = environment.get("domain_url");
@@ -150,14 +184,19 @@ public class IQ_Panel {
         Response response = request.get("/panels/{account_number}/settings");
 
         System.out.println(response.body().asString());
+
+        return response;
     }
 
     @Test //GET
-    public void get_iqpanels_setting() {
-        String defaultSetting = "font_size";
-        get_iqpanels_setting(defaultSetting);
+    public void test_get_iqpanels_setting() {
+        get_iqpanels_setting();
     }
-    public void get_iqpanels_setting(String settingName) {
+    public Response get_iqpanels_setting() {
+        String defaultSetting = "font_size";
+        return get_iqpanels_setting(defaultSetting);
+    }
+    public Response get_iqpanels_setting(String settingName) {
 
         System.out.println("Starting get_iqpanels_property("+settingName+")...");
 
@@ -171,15 +210,20 @@ public class IQ_Panel {
         Response response = request.get("/panels/{account_number}/settings/{setting_name}");
 
         System.out.println(response.body().asString());
+
+        return response;
     }
 
     @Test //PUT
-    public void update_iqpanel_setting() {
-        String defaultSettingName = "alarm_photos";
-        Object defaultSettingValue = true;
-        update_iqpanel_setting(defaultSettingName, defaultSettingValue);
+    public void test_update_iqpanels_setting() {
+        update_iqpanel_setting();
     }
-    public void update_iqpanel_setting(String settingName, Object settingValue) {
+    public Response update_iqpanel_setting() {
+        String defaultSettingName = "font_size";
+        Object defaultSettingValue = "large";
+        return update_iqpanel_setting(defaultSettingName, defaultSettingValue);
+    }
+    public Response update_iqpanel_setting(String settingName, Object settingValue) {
 
         System.out.println("Starting set_iqpanels_property("+settingName+", "+settingValue+")...");
 
@@ -198,5 +242,7 @@ public class IQ_Panel {
         Response response = request.put("/panels/{account_number}/settings");
 
         System.out.println(response.body().asString());
+
+        return response;
     }
 }

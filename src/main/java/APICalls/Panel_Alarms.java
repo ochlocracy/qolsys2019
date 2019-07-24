@@ -31,7 +31,10 @@ public class Panel_Alarms {
     }
 
     @Test //GET
-    public void get_all_iqpanel_alarms() {
+    public void test_get_all_iqpanel_alarms() {
+        get_all_iqpanel_alarms();
+    }
+    public Response get_all_iqpanel_alarms() {
         System.out.println("Starting get_all_panel_alarms...");
 
         RestAssured.baseURI = environment.get("domain_url");
@@ -41,10 +44,15 @@ public class Panel_Alarms {
         Response response = request.get("/alarms");
 
         System.out.println(response.body().asString());
+
+        return response;
     }
 
     @Test //GET
-    public void get_iqpanels_alarms() {
+    public void test_get_iqpanels_alarms() {
+        get_iqpanels_alarms();
+    }
+    public Response get_iqpanels_alarms() {
         System.out.println("Starting get_iqpanels_alarms...");
 
         RestAssured.baseURI = environment.get("domain_url");
@@ -56,10 +64,15 @@ public class Panel_Alarms {
         Response response = request.get("/panels/{account_number}/alarms");
 
         System.out.println(response.body().asString());
+
+        return response;
     }
 
     @Test //GET
-    public void get_iqpanels_partition_alarms() {
+    public void test_get_iqpanels_partition_alarms() {
+        get_iqpanels_partition_alarms();
+    }
+    public Response get_iqpanels_partition_alarms() {
         System.out.println("Starting get_iqpanels_partition_alarms...");
 
         RestAssured.baseURI = environment.get("domain_url");
@@ -72,14 +85,19 @@ public class Panel_Alarms {
         Response response = request.get("/panels/{account_number}/alarms/{partition_id}");
 
         System.out.println(response.body().asString());
+
+        return response;
     }
 
     @Test //PUT
-    public void cancel_iqpanels_partition_active_alarms() {
-        String defaultUserCode = "1234";
-        cancel_iqpanels_partition_active_alarms(defaultUserCode);
+    public void test_cancel_iqpanels_partition_active_alarms() {
+        cancel_iqpanels_partition_active_alarms();
     }
-    public void cancel_iqpanels_partition_active_alarms(String userCode) {
+    public Response cancel_iqpanels_partition_active_alarms() {
+        String defaultUserCode = "1234";
+        return cancel_iqpanels_partition_active_alarms(defaultUserCode);
+    }
+    public Response cancel_iqpanels_partition_active_alarms(String userCode) {
         System.out.println("Starting cancel_iqpanels_partition_active_alarms...");
 
         RestAssured.baseURI = environment.get("domain_url");
@@ -98,5 +116,7 @@ public class Panel_Alarms {
         Response response = request.put("/panels/{account_number}/alarms/{partition_id}/cancel");
 
         System.out.println(response.body().asString());
+
+        return response;
     }
 }

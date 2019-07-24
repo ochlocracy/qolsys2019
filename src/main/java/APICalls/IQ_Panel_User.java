@@ -31,7 +31,10 @@ public class IQ_Panel_User {
     }
 
     @Test //GET
-    public void get_all_users() {
+    public void test_get_all_users() {
+        get_all_users();
+    }
+    public Response get_all_users() {
         System.out.println("Starting get_all_users...");
 
         RestAssured.baseURI = environment.get("domain_url");
@@ -43,10 +46,15 @@ public class IQ_Panel_User {
         Response response = request.get("/panels/{account_number}/users");
 
         System.out.println(response.body().asString());
+
+        return response;
     }
 
     @Test //GET
-    public void get_user() {
+    public void test_get_user() {
+        get_user();
+    }
+    public Response get_user() {
         System.out.println("Starting get_users...");
 
         RestAssured.baseURI = environment.get("domain_url");
@@ -59,14 +67,19 @@ public class IQ_Panel_User {
         Response response = request.get("/panels/{account_number}/users/{user_id}");
 
         System.out.println(response.body().asString());
+
+        return response;
     }
 
     @Test //GET
-    public void get_user_property() {
-        String defaultProperty = "user_name";
-        get_user_property(defaultProperty);
+    public void test_get_user_property() {
+        get_user_property();
     }
-    public void get_user_property(String propertyName) {
+    public Response get_user_property() {
+        String defaultProperty = "user_name";
+        return get_user_property(defaultProperty);
+    }
+    public Response get_user_property(String propertyName) {
 
         System.out.println("Starting get_user_property("+propertyName+")...");
 
@@ -81,17 +94,22 @@ public class IQ_Panel_User {
         Response response = request.get("/panels/{account_number}/users/{user_id}/{property_name}");
 
         System.out.println(response.body().asString());
+
+        return response;
     }
 
 //    @Test //POST
+//    public void test_create_user() {
+//        create_user();
+//    }
 //    //DANGER (maybe)
-//    public void create_user() {
+//    public Response create_user() {
 //        Integer newUserId = 1;
 //        int[] newPartitionId = {};
 //        String newUserCode = "";
-//        create_user(newUserId, newPartitionId, newUserCode);
+//        return create_user(newUserId, newPartitionId, newUserCode);
 //    }
-//    public void create_user(Integer userId, int[] partitionId, String userCode) {
+//    public Response create_user(Integer userId, int[] partitionId, String userCode) {
 //        System.out.println("Starting create_user...");
 //
 //        RestAssured.baseURI = environment.get("domain_url");
@@ -108,15 +126,20 @@ public class IQ_Panel_User {
 //        Response response = request.post("/panels/{account_number}/users");
 //
 //        System.out.println(response.body().asString());
+//
+//        return response;
 //    }
 
     @Test //PUT
-    public void update_user() {
+    public void test_update_user() {
+        update_user();
+    }
+    public Response update_user() {
         String defaultProperty = "user_name";
         Object propertyValue = "EvanII";
-        update_user(defaultProperty, propertyValue);
+        return update_user(defaultProperty, propertyValue);
     }
-    public void update_user(String propertyName, Object propertyValue) {
+    public Response update_user(String propertyName, Object propertyValue) {
         System.out.println("Starting update_user("+propertyName+", "+propertyValue+")...");
 
         RestAssured.baseURI = environment.get("domain_url");
@@ -135,6 +158,8 @@ public class IQ_Panel_User {
         Response response = request.put("/panels/{account_number}/users/{user_id}");
 
         System.out.println(response.body().asString());
+
+        return response;
     }
 
 

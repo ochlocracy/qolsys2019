@@ -31,7 +31,10 @@ public class Bluetooth_Device {
     }
 
     @Test //GET
-    public void get_all_bluetooth_devices() {
+    public void test_get_all_bluetooth_devices() {
+        get_all_bluetooth_devices();
+    }
+    public Response get_all_bluetooth_devices() {
         System.out.println("Starting get_all_bluetooth_devices...");
 
         RestAssured.baseURI = environment.get("domain_url");
@@ -43,14 +46,19 @@ public class Bluetooth_Device {
         Response response = request.get("/panels/{account_number}/devices/bluetooth");
 
         System.out.println(response.body().asString());
+
+        return response;
     }
 
     @Test //GET
-    public void get_bluetooth_device() {
-        String defaultDeviceId = "1";
-        get_bluetooth_device(defaultDeviceId);
+    public void test_get_bluetooth_device() {
+        get_bluetooth_device();
     }
-    public void get_bluetooth_device(String deviceId) {
+    public Response get_bluetooth_device() {
+        String defaultDeviceId = "1";
+        return get_bluetooth_device(defaultDeviceId);
+    }
+    public Response get_bluetooth_device(String deviceId) {
         System.out.println("Starting get_bluetooth_device...");
 
         RestAssured.baseURI = environment.get("domain_url");
@@ -63,15 +71,20 @@ public class Bluetooth_Device {
         Response response = request.get("/panels/{account_number}/devices/bluetooth/{device_id}");
 
         System.out.println(response.body().asString());
+
+        return response;
     }
 
     @Test //GET
-    public void get_bluetooth_property() {
+    public void test_get_bluetooth_property() {
+        get_bluetooth_property();
+    }
+    public Response get_bluetooth_property() {
         String defaultDeviceId = "1";
         String defaultPropertyName = "device_name";
-        get_bluetooth_property(defaultDeviceId, defaultPropertyName);
+        return get_bluetooth_property(defaultDeviceId, defaultPropertyName);
     }
-    public void get_bluetooth_property(String deviceId, String propertyName) {
+    public Response get_bluetooth_property(String deviceId, String propertyName) {
         System.out.println("Starting get_bluetooth_property...");
 
         RestAssured.baseURI = environment.get("domain_url");
@@ -85,5 +98,7 @@ public class Bluetooth_Device {
         Response response = request.get("/panels/{account_number}/devices/bluetooth/{device_id}/{property_name}");
 
         System.out.println(response.body().asString());
+
+        return response;
     }
 }

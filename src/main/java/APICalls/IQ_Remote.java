@@ -31,7 +31,10 @@ public class IQ_Remote {
     }
 
     @Test //GET
-    public void get_all_iq_remotes() {
+    public void test_get_all_iq_remotes() {
+        get_all_iq_remotes();
+    }
+    public Response get_all_iq_remotes() {
         System.out.println("Starting get_all_iq_remotes...");
 
         RestAssured.baseURI = environment.get("domain_url");
@@ -43,14 +46,19 @@ public class IQ_Remote {
         Response response = request.get("/panels/{account_number}/devices/iqremote");
 
         System.out.println(response.body().asString());
+
+        return response;
     }
 
     @Test //GET
-    public void get_iq_remote() {
-        String defaultDeviceId = "1";
-        get_iq_remote(defaultDeviceId);
+    public void test_get_iq_remote() {
+        get_iq_remote();
     }
-    public void get_iq_remote(String deviceId) {
+    public Response get_iq_remote() {
+        String defaultDeviceId = "1";
+        return get_iq_remote(defaultDeviceId);
+    }
+    public Response get_iq_remote(String deviceId) {
         System.out.println("Starting get_iqremote_device...");
 
         RestAssured.baseURI = environment.get("domain_url");
@@ -63,15 +71,20 @@ public class IQ_Remote {
         Response response = request.get("/panels/{account_number}/devices/iqremote/{device_id}");
 
         System.out.println(response.body().asString());
+
+        return response;
     }
 
     @Test //GET
-    public void get_iqremote_property() {
+    public void test_get_iqremote_property() {
+        get_iqremote_property();
+    }
+    public Response get_iqremote_property() {
         String defaultDeviceId = "1";
         String defaultPropertyName = "device_name";
-        get_iqremote_property(defaultDeviceId, defaultPropertyName);
+        return get_iqremote_property(defaultDeviceId, defaultPropertyName);
     }
-    public void get_iqremote_property(String deviceId, String propertyName) {
+    public Response get_iqremote_property(String deviceId, String propertyName) {
         System.out.println("Starting get_iqremote_property...");
 
         RestAssured.baseURI = environment.get("domain_url");
@@ -85,5 +98,7 @@ public class IQ_Remote {
         Response response = request.get("/panels/{account_number}/devices/iqremote/{device_id}/{property_name}");
 
         System.out.println(response.body().asString());
+
+        return response;
     }
 }
