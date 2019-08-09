@@ -22,24 +22,30 @@ public class XMLBlock {
     public String toString() {
         String result = "<" + title;
         if (xmlns != null) {
-            result += " xmlns=\"" + xmlns + "\">";
-        } else {
-            result += ">";
+            result += " xmlns=\"" + xmlns + "\"";
         }
         if (text != null) {
-            result += text;
+            result += ">" + text;
             result += "</" + title+ ">\n";
         } else {
-            result += "\n";
-            for (XMLBlock child : children) {
-                result += child.toString();
+            if (children.isEmpty()) {
+                result += " />\n";
+            } else {
+                result += ">\n";
+                for (XMLBlock child : children) {
+                    result += child.toString();
+                }
+                result += "</" + title + ">\n";
             }
-            result += "</" + title + ">\n";
         }
         return result;
     }
 
     public void addChild(XMLBlock child) {
         children.add(child);
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 }

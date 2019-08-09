@@ -37,6 +37,7 @@ public class SOAPRequest {
         authentication.addChild(new XMLBlock("User", username));
         authentication.addChild(new XMLBlock("Password", password));
         body = new XMLBlock("Body");
+        action.setTitle(serviceName);
         header.addChild(authentication);
         body.addChild(action);
         envelope.addChild(header);
