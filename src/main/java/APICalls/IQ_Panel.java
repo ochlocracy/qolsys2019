@@ -99,7 +99,9 @@ public class IQ_Panel {
 
     @Test //GET
     public void test_get_iqpanels_arm_status() {
-        get_iqpanels_arm_status();
+        Response result = get_iqpanels_arm_status();
+        System.out.println();
+        System.out.println("Panel is in " + result.jsonPath().get("arming_status"));
     }
     public Response get_iqpanels_arm_status() {
         System.out.println("Starting get_iqpanels_arm_status...");
@@ -119,7 +121,9 @@ public class IQ_Panel {
 
     @Test //GET
     public void test_get_iqpanels_partition_arm_status() {
-        get_iqpanels_partition_arm_status();
+        Response result = get_iqpanels_partition_arm_status();
+        System.out.println();
+        System.out.println("Panel is in " + result.jsonPath().get("arming_status"));
     }
     public Response get_iqpanels_partition_arm_status() {
         System.out.println("Starting get_iqpanels_partition_arm_status...");
@@ -189,9 +193,7 @@ public class IQ_Panel {
     }
 
     @Test //GET
-    public void test_get_iqpanels_setting() {
-        get_iqpanels_setting();
-    }
+    public void test_get_iqpanels_setting() { get_iqpanels_setting(); }
     public Response get_iqpanels_setting() {
         String defaultSetting = "font_size";
         return get_iqpanels_setting(defaultSetting);

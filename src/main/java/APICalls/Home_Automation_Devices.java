@@ -173,7 +173,7 @@ public class Home_Automation_Devices {
         return update_home_automation_device(defaultDeviceId, defaultDevicePropertyName, defaultDevicePropertyValue);
     }
     public Response update_home_automation_device(String deviceId, String propertyName, Object propertyValue) {
-        System.out.println("Starting set_delete_mode_on_off...");
+        System.out.println("Starting update_home_automation_device...");
 
         RestAssured.baseURI = environment.get("domain_url");
         RequestSpecification request = RestAssured.given();

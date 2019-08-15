@@ -29,7 +29,7 @@ public class FullTests {
         Assert.assertEquals(response.getStatusCode(), 200);
         System.out.println("Status Code is 200");
         Assert.assertEquals(response.jsonPath().get("connection_status"), "connected");
-        System.out.println("Account is active");
+        System.out.println("Panel is connected");
     }
 
     @Test
@@ -39,7 +39,7 @@ public class FullTests {
         Assert.assertEquals(response.getStatusCode(), 200);
         System.out.println("Status Code is 200");
         Assert.assertEquals(response.jsonPath().get("account_status"), "active");
-        System.out.println("Panel is connected");
+        System.out.println("Account is active");
     }
 
 //    @Test
@@ -116,4 +116,7 @@ public class FullTests {
         Assert.assertEquals(response.getStatusCode(), 200);
         System.out.println("Deleted sensor");
     }
+
+    
+
 }
