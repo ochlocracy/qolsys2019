@@ -72,7 +72,7 @@ public class Driver {
                 .buildService(new AppiumServiceBuilder()
                         .usingDriverExecutable(new File(ConfigProps.nodePath))
                         .withAppiumJS(new File(ConfigProps.appiumPath))
-                        .withArgument(GeneralServerFlag.LOG_LEVEL, "warn")
+                        .withArgument(GeneralServerFlag.LOG_LEVEL, "error")
                         .withIPAddress("127.0.1.1").usingPort(4723));
         DesiredCapabilities cap = new DesiredCapabilities();
         cap.setCapability("deviceName", "IQPanel2");

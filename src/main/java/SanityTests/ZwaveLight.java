@@ -4,6 +4,7 @@ import PanelPages.Lights;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.Reporter;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -14,7 +15,7 @@ import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBuffer;
 import java.io.File;
-import java.util.List;
+
 
 public class ZwaveLight extends Setup {
 
@@ -36,9 +37,11 @@ public class ZwaveLight extends Setup {
         swipeLeft();
         WebElement ele = driver.findElement(By.id("com.qolsys:id/statusButton"));
 
+        Reporter.log("Turning the light ON", true);
         lights.Light_status.click();
         Thread.sleep(3000);
         checkStatus(LightOnIconImg, ele);
+        Reporter.log("Turning the light OFF", true);
         lights.Light_status.click();
         Thread.sleep(3000);
         checkStatus(LightOffIconImg, ele);
@@ -57,7 +60,7 @@ public class ZwaveLight extends Setup {
 
         if (compareImage(tmp, cmp)) {
             System.out.println("Pass: light icon is the expected color");
-          java.lang.Runtime.getRuntime().exec("rm -f " + tmp.getAbsolutePath());
+            java.lang.Runtime.getRuntime().exec("rm -f " + tmp.getAbsolutePath());
             return true;
         } else {
             System.out.println("Fail: light icon is not the expected color");
@@ -65,11 +68,12 @@ public class ZwaveLight extends Setup {
             return false;
         }
     }
+
     //takes a screenshot of the given element and saves it to the given destination
     public File takeScreenshot(WebElement ele) throws Exception {
         // Get entire page screenshot
-        File screenshot = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-        BufferedImage  fullImg = ImageIO.read(screenshot);
+        File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+        BufferedImage fullImg = ImageIO.read(screenshot);
 
         // Get the location of element on the page
         Point point = ele.getLocation();
@@ -79,15 +83,16 @@ public class ZwaveLight extends Setup {
         int eleHeight = ele.getSize().getHeight();
 
         // Crop the entire page screenshot to get only element screenshot
-        BufferedImage eleScreenshot= fullImg.getSubimage(point.getX(), point.getY(),
+        BufferedImage eleScreenshot = fullImg.getSubimage(point.getX(), point.getY(),
                 eleWidth, eleHeight);
         ImageIO.write(eleScreenshot, "png", screenshot);
 
         // Copy the element screenshot to disk
         File screenshotLocation = new File(projectPath + "/screen_shot/test");
         FileUtils.copyFile(screenshot, screenshotLocation);
-        return  screenshotLocation;
+        return screenshotLocation;
     }
+
     //compares two images and returns whether or not they're identical
     public boolean compareImage(File fileA, File fileB) {
         try {

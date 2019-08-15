@@ -10,7 +10,7 @@ public class PanelInfo_ServiceCalls extends Setup {
     public PanelInfo_ServiceCalls() throws Exception {
     }
 
-    public void get_PARTITION() throws IOException, InterruptedException {
+    public  void get_PARTITION() throws IOException, InterruptedException {
         String command = ConfigProps.adbPath + " shell service call qservice 36 i32 0 i32 0 i32 1 i32 0 i32 0";
         rt.exec(command);    }
 

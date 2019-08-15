@@ -2,6 +2,7 @@
   <library name="Maven: cglib:cglib-nodep:2.1_3">
     <CLASSES>
       <root url="jar://$MAVEN_REPOSITORY$/cglib/cglib-nodep/2.1_3/cglib-nodep-2.1_3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/main/java/ServiceCalls/ServiceCalls.jar!/" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$MAVEN_REPOSITORY$/cglib/cglib-nodep/2.1_3/cglib-nodep-2.1_3-javadoc.jar!/" />

@@ -1,11 +1,14 @@
 package SanityTests;
 
 import ServiceCalls.PanelInfo_ServiceCalls;
+import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import utils.ConfigProps;
 import utils.Setup;
+
+
 import java.io.IOException;
 
 /**
@@ -13,10 +16,11 @@ import java.io.IOException;
  */
 
 public class PostUpdateSettings extends Setup {
-    PanelInfo_ServiceCalls servcall = new PanelInfo_ServiceCalls();
 
     public PostUpdateSettings() throws Exception {
+        ConfigProps.init();
     }
+    PanelInfo_ServiceCalls servcall;
 
     @BeforeClass
     public void setUp() throws Exception {
@@ -25,6 +29,7 @@ public class PostUpdateSettings extends Setup {
 
     @Test
     public void settingsCheck() throws InterruptedException, IOException {
+
         String ON = "00000001";
         String OFF = "00000000";
         int one_sec = 1000;
@@ -144,7 +149,9 @@ public class PostUpdateSettings extends Setup {
         else
             System.out.println("[Fail] " + setting + " has value: " + result + ". Expected:" + expected);
     }
+    @Test
     public void setDefaultSettings() throws IOException, InterruptedException {
+        servcall = PageFactory.initElements(driver, PanelInfo_ServiceCalls.class);
         int ON = 1;
         int OFF = 0;
         int one_sec = 1000;

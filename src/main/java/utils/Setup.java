@@ -1,7 +1,7 @@
 package utils;
 
 import PanelPages.*;
-import ServiceCalls.PanelInfo_ServiceCalls;
+import ServiceCalls.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
@@ -18,6 +18,7 @@ public class Setup extends Driver {
     SettingsPage settings;
     AdvancedSettingsPage advanced;
     public String projectPath = new String(System.getProperty("user.dir"));
+    PanelInfo_ServiceCalls servcall;
 
     public Setup() throws Exception {
         ConfigProps.init();
@@ -86,14 +87,14 @@ public class Setup extends Driver {
     }
 
     public void ARM_STAY() {
-        HomePage home_page = PageFactory.initElements(driver, HomePage.class);
+        home_page = PageFactory.initElements(driver, HomePage.class);
         System.out.println("Arm Stay");
         home_page.DISARM.click();
         home_page.ARM_STAY.click();
     }
 
     public void ARM_AWAY(int delay) throws Exception {
-        HomePage home_page = PageFactory.initElements(driver, HomePage.class);
+        home_page = PageFactory.initElements(driver, HomePage.class);
         System.out.println("Arm Away");
         home_page.DISARM.click();
         home_page.ARM_AWAY.click();
@@ -101,7 +102,7 @@ public class Setup extends Driver {
     }
 
     public void ARM_AWAY() throws Exception {
-        HomePage home_page = PageFactory.initElements(driver, HomePage.class);
+        home_page = PageFactory.initElements(driver, HomePage.class);
         System.out.println("Arm Away");
         home_page.DISARM.click();
         home_page.ARM_AWAY.click();
@@ -229,7 +230,7 @@ public class Setup extends Driver {
     }
 
     public void preconditions() throws Exception {
-        PanelInfo_ServiceCalls servcall = new PanelInfo_ServiceCalls();
+        servcall = new PanelInfo_ServiceCalls();
         servcall.set_SIA_LIMITS_disable();
         Thread.sleep(1000);
         servcall.set_NORMAL_ENTRY_DELAY(ConfigProps.normalExitDelay);
