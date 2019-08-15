@@ -2,12 +2,14 @@ package utils;
 
 import PanelPages.*;
 import ServiceCalls.*;
-import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.WebElement;
+import io.appium.java_client.android.AndroidDriver;
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.PageFactory;
 
+import java.io.File;
 import java.io.IOException;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import static utils.ConfigProps.adbPath;
@@ -147,6 +149,17 @@ public class Setup extends Driver {
         }
     }
 
+    public WebElement elementVerification(WebElement element, String element_name) throws Exception {
+        try {
+            if (element.isDisplayed()) {
+                System.out.println("Pass: " + element_name + " is present, value = " + element.getText());
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            return element;}
+    }
+
     public void alarm_verification(){
         HomePage home = PageFactory.initElements(driver, HomePage.class);
         try{
@@ -158,6 +171,45 @@ public class Setup extends Driver {
                 System.exit(0);
             }
         }catch (NoSuchElementException e){}
+    }
+
+    public boolean alarmVerification(String sensor_name) throws Exception {
+        swipeFromRighttoLeft();
+        Thread.sleep(1000);
+        driver.findElement(By.xpath("//android.widget.TextView[@text='ALARMS']")).click();
+        Thread.sleep(1000);
+        WebElement element = driver.findElement(By.xpath("//android.widget.TextView[@text='" + sensor_name + "']"));
+        List<WebElement> date_time = driver.findElements(By.id("com.qolsys:id/type"));
+        try {
+            if (element.isDisplayed()) {
+                System.out.println("Pass: sensor alarm is displayed " + sensor_name);
+                System.out.println(date_time.get(1).getText());
+                swipeFromLefttoRight();
+            }
+            return true;
+        } catch (NoSuchElementException e) {
+        }
+        return false;
+
+    }
+
+    public void verifyInAlarm() throws Exception {
+        HomePage home_page = PageFactory.initElements(this.driver, HomePage.class);
+        try {
+            if (home_page.ALARM.isDisplayed()) {
+                System.out.println("Pass: System is in ALARM");
+            }
+        }catch (NoSuchElementException e){
+            System.out.println("FAIL: System is not in ALARM");
+        }
+    }
+
+    public void verifySensorIsTampered(WebElement sensor_name) throws Exception {
+        if (sensor_name.isDisplayed()) {
+            System.out.println(sensor_name.getText() + " is successfully tampered");
+        } else {
+            System.out.println(sensor_name + " is NOT tampered");
+        }
     }
 
     public void enterDefaultDuressCode() {
@@ -269,4 +321,32 @@ public class Setup extends Driver {
         menu.Settings.click();
     }
 
+    //sensors activity
+    public void pgprimaryCall(int type, int id, String status) throws IOException {
+        String status_send = " shell powerg_simulator_status " + type + "-" + id + " " + status;
+        rt.exec(adbPath + status_send);
+        System.out.println(status_send);
+    }
+
+    public void addPrimaryCallPG(int zone, int group, int sensor_dec, int sensor_type) throws IOException {
+        String add_primary = " shell service call qservice 50 i32 " + zone + " i32 " + group + " i32 " + sensor_dec + " i32 " + sensor_type + " i32 8";
+        rt.exec(adbPath + add_primary);
+        // shell service call qservice 50 i32 100 i32 10 i32 3201105 i32 21
+    }
+
+    //miscellanies
+    public static String captureScreenshot(AndroidDriver driver, String screenshotName) throws IOException {
+        try {
+            TakesScreenshot ts = (TakesScreenshot) driver;
+            File source = ts.getScreenshotAs((OutputType.FILE));
+            String dest = new String(System.getProperty("user.dir")) + "/Report/" + screenshotName + ".png";
+            File destination = new File(dest);
+            FileUtils.copyFile(source, destination);
+            System.out.println("Screenshot taken");
+            return dest;
+        } catch (Exception e) {
+            System.out.println("Exception while taking screenshot " + e.getMessage());
+            return e.getMessage();
+        }
+    }
 }

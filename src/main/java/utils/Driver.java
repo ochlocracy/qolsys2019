@@ -4,8 +4,11 @@ import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.service.local.AppiumDriverLocalService;
 import io.appium.java_client.service.local.AppiumServiceBuilder;
 import io.appium.java_client.service.local.flags.GeneralServerFlag;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.File;
 import java.io.IOException;
@@ -23,6 +26,8 @@ public class Driver {
     public AppiumDriverLocalService service;
     public Runtime rt = Runtime.getRuntime();
     public AndroidDriver<WebElement> driver;
+    public WebDriver driver1;
+    public WebDriverWait wait;
 
 
     public static String execCmd(String cmd) throws java.io.IOException {
@@ -67,13 +72,12 @@ public class Driver {
     }
 
     public void setupDriver() throws Exception {
-
         service = AppiumDriverLocalService
                 .buildService(new AppiumServiceBuilder()
                         .usingDriverExecutable(new File(ConfigProps.nodePath))
                         .withAppiumJS(new File(ConfigProps.appiumPath))
                         .withArgument(GeneralServerFlag.LOG_LEVEL, "error")
-                        .withIPAddress("127.0.1.1").usingPort(4723));
+                        .withIPAddress("127.0.0.1").usingPort(4723));
         DesiredCapabilities cap = new DesiredCapabilities();
         cap.setCapability("deviceName", "IQPanel2");
         cap.setCapability("platformName", "Android");
@@ -90,7 +94,6 @@ public class Driver {
         System.out.println("\n*****Start Appium*****\n");
         Thread.sleep(2000);
 
-
         driver = new AndroidDriver<>(service.getUrl(), cap);
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
     }
@@ -102,5 +105,11 @@ public class Driver {
         System.out.println("\n\n*****Stop appium service*****" + "\n\n");
         service.stop();
         Thread.sleep(2000);
+    }
+
+    public void webDriverSetUp() {
+        System.setProperty("webdriver.chrome.driver", "/home/qolsys/Downloads/chromedriver");
+        driver1 = new ChromeDriver();
+        wait = new WebDriverWait(driver1, 60);
     }
 }
