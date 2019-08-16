@@ -156,6 +156,14 @@ public class ADC extends Setup {
         driver1.findElement(By.id("ctl00_refresh_sensors_button_btnRefreshPage")).click();
         TimeUnit.SECONDS.sleep(5);
     }
+    public void update_sensors_list() throws InterruptedException, IOException {
+        New_ADC_session(getAccountId());
+        Thread.sleep(3000);
+        driver1.findElement(By.partialLinkText("Sensors")).click();
+        Thread.sleep(5000);
+        Request_equipment_list();
+        Thread.sleep(1000);
+    }
 
     public void Sensor_verification(String name, String group, String sensor_type, int number) {
         //number = number of the table row

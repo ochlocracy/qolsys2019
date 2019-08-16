@@ -334,6 +334,12 @@ public class Setup extends Driver {
         // shell service call qservice 50 i32 100 i32 10 i32 3201105 i32 21
     }
 
+    public void pgarmer(int type, int id, String status) throws IOException {
+        String status_send = " shell powerg_simulator_armer " + type + "-" + id + " " + status;
+        rt.exec(adbPath + status_send);
+        System.out.println(status_send);
+    }
+
     //miscellanies
     public static String captureScreenshot(AndroidDriver driver, String screenshotName) throws IOException {
         try {

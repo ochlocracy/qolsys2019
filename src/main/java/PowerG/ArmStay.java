@@ -37,7 +37,7 @@ public class ArmStay extends Setup{
 
     public void create_report(String test_area_name) throws InterruptedException {
         String file = projectPath + "/extent-config.xml";
-        report = new ExtentReports(projectPath + "/Report/QTMS_PowerG_ArmStay.html");
+        report = new ExtentReports(projectPath + "/Report/PowerG_ArmStay.html");
         report.loadConfig(new File(file));
         log = report.startTest(test_area_name);
     }
