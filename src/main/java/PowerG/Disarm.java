@@ -31,13 +31,11 @@ public class Disarm extends Setup {
     ADC adc = new ADC();
 
     public void create_report(String test_area_name) throws InterruptedException {
-        String file = projectPath + "/extent-config.xml";
-        report = new ExtentReports(projectPath + "/Report/PowerG_ArmStay.html");
-        report.loadConfig(new File(file));
+        report = new ExtentReports(projectPath + "/Report/PowerG_Disarm.html");
         log = report.startTest(test_area_name);
     }
     public void add_to_report(String test_case_name) {
-        report = new ExtentReports(projectPath + "/Report/PowerG_ArmStay.html", false);
+        report = new ExtentReports(projectPath + "/Report/PowerG_Disarm.html", false);
         log = report.startTest(test_case_name);
     }
     PanelInfo_ServiceCalls servcall = new PanelInfo_ServiceCalls();
