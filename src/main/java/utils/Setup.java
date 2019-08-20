@@ -381,7 +381,7 @@ public class Setup extends Driver {
     }
 
     public void powerGregistrator(int type, int id) throws IOException {
-        String add_pg = " shell powerg_simulator_registrator " + type + "-" + id;
+        String add_pg = " shell powerg_simulator_registrator -a " + type + "-" + id;
         rt.exec(adbPath + add_pg);
         //shell powerg_simulator_registrator 101-0001
     }

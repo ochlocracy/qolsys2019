@@ -16,7 +16,6 @@ import org.testng.ITestResult;
 import org.testng.annotations.*;
 import PanelPages.*;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -31,9 +30,6 @@ public class SanityTest extends Setup {
     ExtentReports report;
     ExtentTest log;
     ExtentTest test;
-    final String ON = "00000001";
-    final String OFF = "00000000";
-    int one_sec = 1000;
 
     public SanityTest() throws Exception {
         ConfigProps.init();
@@ -75,9 +71,7 @@ public class SanityTest extends Setup {
 
     public void report_tear_down(ITestResult result) throws IOException {
         if (result.getStatus() == ITestResult.FAILURE) {
-            String screenshot_path = captureScreenshot(driver, result.getName());
             log.log(LogStatus.FAIL, "Test Case failed is " + result.getName());
-            log.log(LogStatus.FAIL, "Snapshot below:  " + test.addScreenCapture(screenshot_path));
             test.addScreenCapture(captureScreenshot(driver, result.getName()));
         }
         report.endTest(log);
@@ -95,7 +89,7 @@ public class SanityTest extends Setup {
     }
 
     @Test(priority = 1)
-    public void Add_Sensor() throws Exception {
+    public void addSensor() throws Exception {
         create_report("Sanity_01");
         log.log(LogStatus.INFO, ("*Sanity_01* Add a sensor"));
         HomePage home = PageFactory.initElements(driver, HomePage.class);
@@ -111,13 +105,13 @@ public class SanityTest extends Setup {
 //        home.Home_button.click();
     } //48sec
 
-    @Test
+   //test all sticker types
     public void dw_testing() throws IOException, InterruptedException {
         dw_sensor_testing();
     }
 
     @Test(priority = 2, retryAnalyzer = RetryAnalizer.class)
-    public void Edit_Name() throws InterruptedException, IOException {
+    public void editName() throws InterruptedException, IOException {
         add_to_report("Sanity_02");
         log.log(LogStatus.INFO, ("*Sanity_02* Edit sensor Name"));
 
@@ -156,7 +150,7 @@ public class SanityTest extends Setup {
     } //2m 20sec
 
     @Test(priority = 3, retryAnalyzer = RetryAnalizer.class)
-    public void Delete_Sensor() throws InterruptedException, IOException {
+    public void deleteSensor() throws InterruptedException, IOException {
         add_to_report("Sanity_03");
         log.log(LogStatus.INFO, ("*Sanity_03* Delete the sensor"));
         HomePage home = PageFactory.initElements(driver, HomePage.class);
@@ -492,19 +486,19 @@ public class SanityTest extends Setup {
         log.log(LogStatus.INFO, "Activate keypad");
         activation_restoration(371, 1005, PGSensorsActivity.POLICEPANIC, PGSensorsActivity.POLICEPANICREST);//gr0
         Thread.sleep(5000);
-        adc.ADC_verification_PG("//*[contains(text(), 'KeypadTouchscreen 25')]", "//*[contains(text(), 'Police Panic')]");
+        adc.ADC_verification_PG("//*[contains(text(), 'Keypad 371-1005')]", "//*[contains(text(), 'Police Panic')]");
         log.log(LogStatus.PASS, "System is in ALARM(Police Panic), ADC events are displayed correctly, keypad gr0 works as expected");
         enterDefaultUserCode();
         Thread.sleep(5000);
         activation_restoration(371, 1006, PGSensorsActivity.POLICEPANIC, PGSensorsActivity.POLICEPANICREST);//gr1
         Thread.sleep(7000);
-        adc.ADC_verification_PG("//*[contains(text(), 'Keypad/Touchscreen(26)')]", "//*[contains(text(), 'Delayed Police Panic')]");
+        adc.ADC_verification_PG("//*[contains(text(), 'Keypad 371-1006')]", "//*[contains(text(), 'Delayed Police Panic')]");
         log.log(LogStatus.PASS, "System is in ALARM(Police Panic), ADC events are displayed correctly, keypad gr1 works as expected");
         enterDefaultUserCode();
         Thread.sleep(5000);
         activation_restoration(371, 1008, PGSensorsActivity.POLICEPANIC, PGSensorsActivity.POLICEPANICREST);//gr2
         Thread.sleep(5000);
-        adc.ADC_verification_PG("//*[contains(text(), 'Keypad/Touchscreen(27)')]", "//*[contains(text(), 'Police Panic')]");
+        adc.ADC_verification_PG("//*[contains(text(), 'Keypad 371-1008')]", "//*[contains(text(), 'Police Panic')]");
         log.log(LogStatus.PASS, "System is in ALARM(Police Panic), ADC events are displayed correctly, keypad gr2 works as expected");
         Thread.sleep(5000);
 
@@ -534,7 +528,7 @@ public class SanityTest extends Setup {
     } //11m 20 sec
 
     @Test(priority = 11)
-    public void Tamper() throws IOException, InterruptedException {
+    public void tamper() throws IOException, InterruptedException {
         add_to_report("Sanity_11");
         log.log(LogStatus.INFO, ("*Sanity_11* Tamper Sensor"));
         log.log(LogStatus.INFO, "Tamper events verification");
@@ -566,7 +560,7 @@ public class SanityTest extends Setup {
     } // 12m 1
 
     @Test(priority = 12)
-    public void Supervisory() throws IOException, InterruptedException {
+    public void supervisory() throws IOException, InterruptedException {
         add_to_report("Sanity_12");
         log.log(LogStatus.INFO, ("*Sanity_12* Supervisory Verification"));
         log.log(LogStatus.INFO, "Supervisory verification");
@@ -623,7 +617,7 @@ public class SanityTest extends Setup {
     } //1m
 
     @Test(priority = 13)
-    public void Jam() throws Exception {
+    public void jam() throws Exception {
         add_to_report("Sanity_13");
         log.log(LogStatus.INFO, ("*Sanity_13* Jam Event Verification"));
         HomePage home = PageFactory.initElements(driver, HomePage.class);
@@ -662,7 +656,7 @@ public class SanityTest extends Setup {
     } //48sec
 
     @Test(priority = 14, retryAnalyzer = RetryAnalizer.class)
-    public void Low_Battery() throws InterruptedException, IOException {
+    public void lowBattery() throws InterruptedException, IOException {
         HomePage home = PageFactory.initElements(driver, HomePage.class);
         ContactUs contact = PageFactory.initElements(driver, ContactUs.class);
         SettingsPage set = PageFactory.initElements(driver, SettingsPage.class);
