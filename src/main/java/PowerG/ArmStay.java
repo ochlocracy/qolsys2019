@@ -16,7 +16,6 @@ import utils.ConfigProps;
 import utils.PGSensorsActivity;
 import utils.Setup;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -1538,7 +1537,7 @@ public class ArmStay extends Setup{
         enterDefaultUserCode();
         Thread.sleep(2000);
         alarmVerification("DW 104-1101 - OPEN");
-        ADC_verification("//*[contains(text(), 'DW 104-1101')]", "//*[contains(text(), 'Sensor 3 Open/Close')]");
+        ADC_verification("//*[contains(text(), 'DW 104-1101')]", "//*[contains(text(), '(Sensor 3) Opened/Close')]");
         log.log(LogStatus.PASS, ("Pass: system is responsive after the screensaver mode"));
     }
 
@@ -1562,7 +1561,7 @@ public class ArmStay extends Setup{
         enterDefaultUserCode();
         Thread.sleep(2000);
         alarmVerification("DW 104-1231 - OPEN");
-        ADC_verification("//*[contains(text(), 'DW 104-1231')]", "//*[contains(text(), 'Sensor 3 Open/Close')]");
+        ADC_verification("//*[contains(text(), 'DW 104-1231')]", "//*[contains(text(), '(Sensor 3) Opened/Close')]");
         log.log(LogStatus.PASS, ("Pass: system is responsive after the screensaver mode"));
     }
 

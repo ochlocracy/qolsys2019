@@ -1,7 +1,7 @@
 package utils;
 
 import PanelPages.*;
-import ServiceCalls.*;
+import ServiceCalls.PanelInfo_ServiceCalls;
 import io.appium.java_client.android.AndroidDriver;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
@@ -9,21 +9,38 @@ import org.openqa.selenium.support.PageFactory;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import static utils.ConfigProps.adbPath;
 
 public class Setup extends Driver {
+    public String projectPath = new String(System.getProperty("user.dir"));
     HomePage home_page;
     SlideMenu menu;
     SettingsPage settings;
     AdvancedSettingsPage advanced;
-    public String projectPath = new String(System.getProperty("user.dir"));
     PanelInfo_ServiceCalls servcall;
 
     public Setup() throws Exception {
         ConfigProps.init();
+    }
+
+    //miscellanies
+    public static String captureScreenshot(AndroidDriver driver, String screenshotName) throws IOException {
+        try {
+            TakesScreenshot ts = (TakesScreenshot) driver;
+            File source = ts.getScreenshotAs((OutputType.FILE));
+            String dest = new String(System.getProperty("user.dir")) + "/Report/" + screenshotName + ".png";
+            File destination = new File(dest);
+            FileUtils.copyFile(source, destination);
+            System.out.println("Screenshot taken");
+            return dest;
+        } catch (Exception e) {
+            System.out.println("Exception while taking screenshot " + e.getMessage());
+            return e.getMessage();
+        }
     }
 
     public void swipeRight() throws InterruptedException {
@@ -130,7 +147,8 @@ public class Setup extends Driver {
                 System.out.println("Failed: System is not in the expected state! Current state: " + home_page.Disarmed_text.getText());
                 System.exit(0);
             }
-        } catch (NoSuchElementException e){}
+        } catch (NoSuchElementException e) {
+        }
         return "System is: " + panel_state;
     }
 
@@ -157,20 +175,22 @@ public class Setup extends Driver {
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            return element;}
+            return element;
+        }
     }
 
-    public void alarm_verification(){
+    public void alarm_verification() {
         HomePage home = PageFactory.initElements(driver, HomePage.class);
-        try{
-            if(home.ALARM.isDisplayed()){
+        try {
+            if (home.ALARM.isDisplayed()) {
                 System.out.println("Pass: Alarm is displayed!");
                 enterDefaultUserCode();
-            }else{
+            } else {
                 System.out.println("FAIL: No ALARM event!");
                 System.exit(0);
             }
-        }catch (NoSuchElementException e){}
+        } catch (NoSuchElementException e) {
+        }
     }
 
     public boolean alarmVerification(String sensor_name) throws Exception {
@@ -199,7 +219,7 @@ public class Setup extends Driver {
             if (home_page.ALARM.isDisplayed()) {
                 System.out.println("Pass: System is in ALARM");
             }
-        }catch (NoSuchElementException e){
+        } catch (NoSuchElementException e) {
             System.out.println("FAIL: System is not in ALARM");
         }
     }
@@ -321,6 +341,20 @@ public class Setup extends Driver {
         menu.Settings.click();
     }
 
+    public void navigate_to_autolearn_page() throws InterruptedException {
+        Thread.sleep(2000);
+        AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
+        InstallationPage instal = PageFactory.initElements(driver, InstallationPage.class);
+        DevicesPage dev = PageFactory.initElements(driver, DevicesPage.class);
+        SecuritySensorsPage ss = PageFactory.initElements(driver, SecuritySensorsPage.class);
+        navigateToAdvancedSettingsPage();
+        adv.INSTALLATION.click();
+        instal.DEVICES.click();
+        dev.Security_Sensors.click();
+        ss.Auto_Learn_Sensor.click();
+        Thread.sleep(1000);
+    }
+
     //sensors activity
     public void pgprimaryCall(int type, int id, String status) throws IOException {
         String status_send = " shell powerg_simulator_status " + type + "-" + id + " " + status;
@@ -334,25 +368,106 @@ public class Setup extends Driver {
         // shell service call qservice 50 i32 100 i32 10 i32 3201105 i32 21
     }
 
+    public void addPrimaryCallPG(int zone, int group, String sensor_dec, int sensor_type) throws IOException {
+        String add_primary = " shell service call qservice 50 i32 " + zone + " i32 " + group + " i32 " + sensor_dec + " i32 " + sensor_type + " i32 8";
+        rt.exec(adbPath + add_primary);
+        // shell service call qservice 50 i32 100 i32 10 i32 3201105 i32 21
+    }
+
     public void pgarmer(int type, int id, String status) throws IOException {
         String status_send = " shell powerg_simulator_armer " + type + "-" + id + " " + status;
         rt.exec(adbPath + status_send);
         System.out.println(status_send);
     }
 
-    //miscellanies
-    public static String captureScreenshot(AndroidDriver driver, String screenshotName) throws IOException {
+    public void powerGregistrator(int type, int id) throws IOException {
+        String add_pg = " shell powerg_simulator_registrator " + type + "-" + id;
+        rt.exec(adbPath + add_pg);
+        //shell powerg_simulator_registrator 101-0001
+    }
+
+    public void powerGactivator(int type, int id) throws IOException, InterruptedException {
+        Thread.sleep(2000);
+        String activate_pg = " shell powerg_simulator_activator " + type + "-" + id;
+        rt.exec(adbPath + activate_pg);
+        Thread.sleep(2000);
+        //shell powerg_simulator_activatortor 101-0001
+    }
+
+    public void powerGjamer(int state) throws IOException {
+        String status_send = " shell powerg_simulator_jamer " + state;
+        rt.exec(adbPath + status_send);
+        System.out.println(status_send);
+    }
+
+    public void addPGSensors(String sensor, int Type, int Id, int gn) throws IOException, InterruptedException {
+        Thread.sleep(1000);
+        powerGregistrator(Type, Id);
+        Thread.sleep(3000);
+        driver.findElementById("com.qolsys:id/ok").click();
+
+        Thread.sleep(2000);
+        driver.findElement(By.id("com.qolsys:id/sensor_desc")).click();
+        Thread.sleep(1000);
+        driver.findElement(By.xpath("//android.widget.CheckedTextView[@text='Custom Description']")).click();
+        driver.findElement(By.id("com.qolsys:id/sensorDescText")).sendKeys(sensor + " " + Type + "-" + Id);
         try {
-            TakesScreenshot ts = (TakesScreenshot) driver;
-            File source = ts.getScreenshotAs((OutputType.FILE));
-            String dest = new String(System.getProperty("user.dir")) + "/Report/" + screenshotName + ".png";
-            File destination = new File(dest);
-            FileUtils.copyFile(source, destination);
-            System.out.println("Screenshot taken");
-            return dest;
+            driver.hideKeyboard();
         } catch (Exception e) {
-            System.out.println("Exception while taking screenshot " + e.getMessage());
-            return e.getMessage();
+            //       e.printStackTrace();
+        }
+        Thread.sleep(2000);
+        driver.findElement(By.id("com.qolsys:id/grouptype")).click();
+        List<WebElement> gli = driver.findElements(By.id("android:id/text1"));
+        gli.get(gn).click();
+
+        Thread.sleep(1000);
+        driver.findElementById("com.qolsys:id/addsensor").click();
+        Thread.sleep(1000);
+        powerGactivator(Type, Id);
+        Thread.sleep(2000);
+    }
+
+    public void activation_restoration(int type, int id, String status1, String status2) throws InterruptedException, IOException {
+        pgprimaryCall(type, id, status1);
+        Thread.sleep(5000);
+        pgprimaryCall(type, id, status2);
+        Thread.sleep(1000);
+    }
+
+    public void powerGsupervisory(int type, int id) throws IOException {
+        String status_send = " shell powerg_simulator_supervisory " + type + "-" + id + " 1 0 0 0";
+        rt.exec(adbPath + status_send);
+        System.out.println(status_send);
+    }
+
+    public void dw_sensor_testing() throws IOException, InterruptedException {
+        List<Integer> dw_sticker_type = Arrays.asList(100, 101, 104, 107, 108, 109, 110);
+
+        for (int i = 0; i < dw_sticker_type.size(); i++) {
+            addPrimaryCallPG(50, 10, dw_sticker_type.get(i) + "1102", 1);
+            Thread.sleep(3000);
+            pgprimaryCall(dw_sticker_type.get(i), 1102, PGSensorsActivity.INOPEN);
+            Thread.sleep(3000);
+            try {
+                if (driver.findElement(By.id("com.qolsys:id/t3_home_tv_SensorName")).getText().equals("Door-Window 50"))
+                    System.out.println(dw_sticker_type.get(i) + " sticker type sensor state is OPEN");
+            } catch (Exception e) {
+                System.out.println(dw_sticker_type.get(i) + " sticker type DOES NOT work correctly!");
+            }
+
+            pgprimaryCall(dw_sticker_type.get(i), 1102, PGSensorsActivity.INCLOSE);
+            Thread.sleep(3000);
+
+            try {
+                if (driver.findElement(By.id("com.qolsys:id/t3_home_tv_SensorName")).getText().equals("Door-Window 50"))
+                    System.out.println(dw_sticker_type.get(i) + " sticker type DOES NOT work correctly, sensor state is OPEN!");
+            } catch (Exception e) {
+                System.out.println(dw_sticker_type.get(i) + " sticker type works correctly, sensor state is CLOSE!");
+            } finally {
+                deleteFromPrimary(50);
+                Thread.sleep(3000);
+            }
         }
     }
 }
