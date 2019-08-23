@@ -284,6 +284,18 @@ public class Setup extends Driver {
         enterDefaultDealerCode();
     }
 
+    public void navigateToEditSensorPage() throws IOException, InterruptedException {
+        InstallationPage instal = PageFactory.initElements(driver, InstallationPage.class);
+        DevicesPage dev = PageFactory.initElements(driver, DevicesPage.class);
+        AdvancedSettingsPage adv = PageFactory.initElements(driver, AdvancedSettingsPage.class);
+        SecuritySensorsPage sec = PageFactory.initElements(driver, SecuritySensorsPage.class);
+        navigateToAdvancedSettingsPage();
+        adv.INSTALLATION.click();
+        instal.DEVICES.click();
+        dev.Security_Sensors.click();
+        sec.Edit_Sensor.click();
+    }
+
     public void addPrimaryCall(int zone, int group, int sensor_dec, int sensor_type) throws IOException {
         String add_primary = " shell service call qservice 50 i32 " + zone + " i32 " + group + " i32 " + sensor_dec + " i32 " + sensor_type;
         rt.exec(adbPath + add_primary);

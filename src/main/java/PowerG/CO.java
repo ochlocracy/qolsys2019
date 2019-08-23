@@ -33,12 +33,12 @@ public class CO extends Setup {
     }
 
     public void create_report(String test_area_name) throws InterruptedException {
-        report = new ExtentReports(projectPath + "/Report/CarbonMonoxide.html");
+        report = new ExtentReports(projectPath + "/Report/CO.html");
         log = report.startTest(test_area_name);
     }
 
     public void add_to_report(String test_case_name) {
-        report = new ExtentReports(projectPath + "/Report/CarbonMonoxide.html", false);
+        report = new ExtentReports(projectPath + "/Report/CO.html", false);
         log = report.startTest(test_case_name);
     }
 

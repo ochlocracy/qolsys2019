@@ -51,7 +51,6 @@ public class GlassBreak extends Setup{
             Thread.sleep(7000);
         }
     }
-
     public void default_state() throws IOException, InterruptedException {
         disarmServiceCall();
         TimeUnit.SECONDS.sleep(1);
@@ -59,13 +58,14 @@ public class GlassBreak extends Setup{
         TimeUnit.SECONDS.sleep(2);
         pgprimaryCall(160, 1871, PGSensorsActivity.TAMPERREST);
 
-    }public void create_report(String test_area_name) throws InterruptedException {
-        report = new ExtentReports(projectPath + "/Report/PowerG_ArmAway.html");
+    }
+    public void create_report(String test_area_name) throws InterruptedException {
+        report = new ExtentReports(projectPath + "/Report/GlassBreak.html");
         log = report.startTest(test_area_name);
     }
 
     public void add_to_report(String test_case_name) {
-        report = new ExtentReports(projectPath + "/Report/PowerG_ArmAway.html", false);
+        report = new ExtentReports(projectPath + "/Report/GlassBreak.html", false);
         log = report.startTest(test_case_name);
     }
 
@@ -83,7 +83,7 @@ public class GlassBreak extends Setup{
 
     @Test(priority = 1, retryAnalyzer = RetryAnalizer.class)
     public void Glass_01() throws Exception {
-        add_to_report("Glassbreak_01");
+        create_report("Glassbreak_01");
         log.log(LogStatus.INFO, ("*Glassbreak_01* Disarm mode tripping Glass_break group 13, 17 -> Expected result = system stays in Disarm mode"));
         TimeUnit.SECONDS.sleep(1);
         pgprimaryCall(160, 1874, PGSensorsActivity.GB);
