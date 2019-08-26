@@ -219,7 +219,7 @@ public class CO extends Setup {
     public void ArmAwayTamper_34() throws Exception {
         add_to_report("Arm Away CO sensor");
         log.log(LogStatus.INFO, ("ArmAway - Tamper Carbon Monoxide"));
-        ArmAway_Tamper_Sensor("//*[contains(text(), 'Sensor 16 Tamper')]", "//*[contains(text(), '(Sensor 16) Tamper Alarm')]");
+        ArmAway_Tamper_Sensor("//*[contains(text(), 'CO 220-1661 (Sensor 16)')]", "//*[contains(text(), '(Sensor 16) Tamper ')]");
         log.log(LogStatus.PASS, ("Pass: System is in Alarm, events are displayed correctly on the ADC dealer website"));
         System.out.println("Pass: System is in Alarm, events are displayed correctly on the ADC dealer website" + "\n__________________________");
     }
