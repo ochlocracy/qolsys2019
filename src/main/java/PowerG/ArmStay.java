@@ -104,7 +104,7 @@ public class ArmStay extends Setup{
         log.log(LogStatus.PASS, ("Pass: system is in alarm"));
         System.out.println("Pass: system is in alarm" + "\n__________________________");
 
-    }
+    } // run time 1 min 44 sec
 
     @Test
     public void AS_02_DW12() throws Exception {
@@ -124,7 +124,7 @@ public class ArmStay extends Setup{
         ADC_verification("//*[contains(text(), 'DW 104-1101')]", "//*[contains(text(), 'Pending Alarm ')]");
         log.log(LogStatus.PASS, ("Pass: system is in alarm"));
         System.out.println("Pass: system is in alarm" + "\n__________________________");
-    }
+    }  // run time 1 min  47 sec
 
     @Test
     public void AS_03_DW14() throws Exception {
@@ -144,7 +144,7 @@ public class ArmStay extends Setup{
         ADC_verification("//*[contains(text(), 'DW 104-1216')]", "//*[contains(text(), 'Pending Alarm ')]");
         log.log(LogStatus.PASS, ("Pass: system is in alarm"));
         System.out.println("Pass: system is in alarm" + "\n__________________________");
-    }
+    }  // run time 1 min 31 sec
 
     @Test
     public void AS_04_DW13() throws Exception {
@@ -164,7 +164,7 @@ public class ArmStay extends Setup{
         ADC_verification("//*[contains(text(), 'DW 104-1231')]", "//*[contains(text(), 'Pending Alarm ')]");
         log.log(LogStatus.PASS, ("Pass: system is in alarm"));
         System.out.println("Pass: system is in alarm" + "\n__________________________");
-    }
+    }  // run time 1 min 36 sec
 
     @Test
     public void AS_05_DW16() throws Exception {
@@ -184,7 +184,7 @@ public class ArmStay extends Setup{
         ADC_verification("//*[contains(text(), 'DW 104-1331')]", "//*[contains(text(), 'Disarmed')]");
         log.log(LogStatus.PASS, ("Pass: system is in Arm Stay mode"));
         System.out.println("Pass: system is in Arm Stay mode" + "\n__________________________");
-    }
+    }  // run time 1 min 56 sec
 
     @Test
     public void AS_06_DW8() throws Exception {
@@ -205,7 +205,7 @@ public class ArmStay extends Setup{
         log.log(LogStatus.PASS, ("Pass: system is in alarm"));
         System.out.println("Pass: system is in alarm" + "\n__________________________");
 
-    }
+    }  // run time 1 min 42 sec
 
     @Test
     public void AS_07_DW9() throws Exception {
@@ -225,7 +225,7 @@ public class ArmStay extends Setup{
         ADC_verification("//*[contains(text(), 'DW 104-1123')]", "//*[contains(text(), 'Pending Alarm ')]");
         log.log(LogStatus.PASS, ("Pass: system is in alarm"));
         System.out.println("Pass: system is in alarm" + "\n__________________________");
-    }
+    }  // run time 1 min 50 sec
 
     @Test
     public void AS_08_DW25() throws Exception {
@@ -245,7 +245,7 @@ public class ArmStay extends Setup{
         ADC_verification("//*[contains(text(), 'DW 104-1311')]", "//*[contains(text(), 'Panel Armed Stay')]");
         log.log(LogStatus.PASS, ("Pass: system is in Arm Stay mode"));
         System.out.println("Pass: system is in Arm Stay mode" + "\n__________________________");
-    }
+    }  // run time 1 min 44 sec
 
     @Test
     public void AS_09_M15() throws Exception {
@@ -263,7 +263,7 @@ public class ArmStay extends Setup{
         ADC_verification("//*[contains(text(), 'Motion 120-1411')]", "//*[contains(text(), 'Pending Alarm ')]");
         log.log(LogStatus.PASS, ("Pass: system is in alarm"));
         System.out.println("Pass: system is in alarm" + "\n__________________________");
-    }
+    }  // run time 1 min 40 sec
 
     @Test
     public void AS_10_M17() throws Exception {
@@ -280,7 +280,7 @@ public class ArmStay extends Setup{
         DISARM();
         log.log(LogStatus.PASS, ("Pass: system is in Arm Stay mode"));
         System.out.println("Pass: system is in Arm Stay mode" + "\n__________________________");
-    }
+    }  // run time 59 sec
 
     @Test
     public void AS_11_M20() throws Exception {
@@ -297,7 +297,7 @@ public class ArmStay extends Setup{
         DISARM();
         log.log(LogStatus.PASS, ("Pass: system is in Arm Stay mode"));
         System.out.println("Pass: system is in Arm Stay mode" + "\n__________________________");
-    }
+    }  // run time 1 min 0 sec
 
     @Test
     public void AS_12_M35() throws Exception {
@@ -315,7 +315,7 @@ public class ArmStay extends Setup{
         ADC_verification("//*[contains(text(), 'Motion 123-1446')]", "//*[contains(text(), 'Pending Alarm ')]");
         log.log(LogStatus.PASS, ("Pass: system is in alarm"));
         System.out.println("Pass: system is in alarm" + "\n__________________________");
-    }
+    }  // run time 1 min 51 sec
 
     @Test
     public void AS_13_DW25() throws Exception {
@@ -332,7 +332,7 @@ public class ArmStay extends Setup{
         DISARM();
         log.log(LogStatus.PASS, ("Pass: system is in Arm Stay mode"));
         System.out.println("Pass: system is in Arm Stay mode" + "\n__________________________");
-    }
+    }  // run time 57 sec
 
     @Test
     public void AS_14_M15() throws Exception {
@@ -350,7 +350,7 @@ public class ArmStay extends Setup{
         ADC_verification("//*[contains(text(), 'Motion 120-1411')]", "//*[contains(text(), 'Pending Alarm ')]");
         log.log(LogStatus.PASS, ("Pass: system is in alarm and can be disarmed"));
         System.out.println("Pass: system is in alarm and can be disarmed" + "\n__________________________");
-    }
+    }  // run time 1 min 40 sec
 
     @Test
     public void AS_15_DW10_DW12() throws Exception {
@@ -379,7 +379,7 @@ public class ArmStay extends Setup{
         ADC_verification("//*[contains(text(), 'DW 104-1101 (Sensor 1) Pending Alarm')]", "//*[contains(text(), 'DW 104-1152 (Sensor 2) Pending Alarm')]");
         log.log(LogStatus.PASS, ("Pass: system reports alarm for both sensors group 10 and 12"));
         System.out.println("Pass: system reports alarm for both sensors group 10 and 12" );
-    }
+    }  // run time 2 min 9 sec
 
     @Test
     public void AS_16_DW10_DW14() throws Exception {
@@ -409,7 +409,7 @@ public class ArmStay extends Setup{
         pgprimaryCall(104, 1216, PGSensorsActivity.INCLOSE);
         log.log(LogStatus.PASS, ("Pass: system reports alarm for both sensors group 10 and 14"));
         System.out.println("Pass: system reports alarm for both sensors group 10 and 14" + "\n__________________________");
-    }
+    }  // run time
 
     @Test
     public void AS_17_DW10_DW13() throws Exception {
@@ -436,7 +436,7 @@ public class ArmStay extends Setup{
         ADC_verification("//*[contains(text(), 'DW 104-1101 (Sensor 1) Pending Alarm')]", "//*[contains(text(), 'DW 104-1231 (Sensor 3) Pending Alarm')]");
         log.log(LogStatus.PASS, ("Pass: system reports alarm for both sensors group 10 and 14"));
         System.out.println("Pass: system reports alarm for both sensors group 10 and 14" + "\n__________________________");
-    }
+    }  // run time
 
     @Test
     public void AS_18_DW10_DW16() throws Exception {
@@ -460,7 +460,7 @@ public class ArmStay extends Setup{
         ADC_verification("//*[contains(text(), 'DW 104-1101 (Sensor 1)')]", "//*[contains(text(), ' Pending Alarm')]");
         log.log(LogStatus.PASS, ("Pass: system reports alarm for sensors group 10 only"));
         System.out.println("Pass: system reports alarm for sensors group 10 only"+ "\n__________________________");
-    }
+    }  // run time
 
     @Test
     public void AS_19_DW10_M15() throws Exception {
@@ -486,7 +486,7 @@ public class ArmStay extends Setup{
         ADC_verification("//*[contains(text(), 'DW 104-1101 (Sensor 1) Pending Alarm')]", "//*[contains(text(), 'Motion 120-1411 (Sensor 9) Pending Alarm')]");
         log.log(LogStatus.PASS, ("Pass: system reports alarm for sensors group 10 and 15"));
         System.out.println("Pass: system reports alarm for sensors group 10 and 15"+ "\n__________________________");
-    }
+    }  // run time
 
     @Test
     public void AS_20_DW10_M35() throws Exception {

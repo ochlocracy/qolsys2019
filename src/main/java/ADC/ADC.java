@@ -28,7 +28,7 @@ public class ADC extends Setup {
             accountId = "5434143";
         } else if (get_UDID().equals("9110ead0")) {   // Denis
             accountId = "7377258";
-        } else if (get_UDID().equals("2c68bc67")) {    // Denis
+        } else if (get_UDID().equals("2c68bc67")) {    // REPLACE
             accountId = "5323198";
         }
         return accountId;

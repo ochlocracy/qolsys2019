@@ -90,7 +90,7 @@ public class ArmAway extends Setup{
         verifySystemState("DISARMED");
         log.log(LogStatus.PASS, ("System is Disarmed from ADC user website"));
         System.out.println("System is Disarmed from ADC user website" + "\n__________________________");
-    }
+    }  // run time 1 min 30 sec
     @Test
     public void AA_03_dw10() throws Exception {
         add_to_report("AA_03");
@@ -106,7 +106,7 @@ public class ArmAway extends Setup{
         verifySystemState("DISARMED");
         log.log(LogStatus.PASS, ("System is Disarmed"));
         System.out.println("System is Disarmed" + "\n__________________________");
-    }
+    }  // run time 1 min 0 sec
     @Test
     public void AA_04_dw12() throws Exception {
         add_to_report("AA_04");
@@ -122,7 +122,7 @@ public class ArmAway extends Setup{
         verifySystemState("DISARMED");
         log.log(LogStatus.PASS, ("System is Disarmed"));
         System.out.println("System is Disarmed" + "\n__________________________");
-    }
+    }  // run time 1 min 0 sec
     @Test
     public void AA_05_dw12() throws Exception {
         add_to_report("AA_05");
@@ -138,7 +138,7 @@ public class ArmAway extends Setup{
         verifySystemState("DISARMED");
         log.log(LogStatus.PASS, ("System is Disarmed"));
         System.out.println("System is Disarmed" + "\n__________________________");
-    }
+    }  // run time 56 sec
     @Test
     public void AA_06_dw10_dw12() throws Exception {
         add_to_report("AA_06");
@@ -158,7 +158,7 @@ public class ArmAway extends Setup{
         verifySystemState("DISARMED");
         log.log(LogStatus.PASS, ("System is Disarmed"));
         System.out.println("System is Disarmed" + "\n__________________________");
-    }
+    }  // run time 1 min 2 sec
     @Test
     public void AA_07_dw10_m15() throws Exception {
         add_to_report("AA_07");
@@ -176,7 +176,7 @@ public class ArmAway extends Setup{
         verifySystemState("DISARMED");
         log.log(LogStatus.PASS, ("System is Disarmed"));
         System.out.println("System is Disarmed" + "\n__________________________");
-    }
+    }  // run time 57 sec
     @Test
     public void AA_08_m20() throws Exception {
         add_to_report("AA_08");
@@ -190,7 +190,7 @@ public class ArmAway extends Setup{
         verifySystemState("DISARMED");
         log.log(LogStatus.PASS, ("System is Disarmed"));
         System.out.println("System is Disarmed" + "\n__________________________");
-    }
+    }  // run time 56 sec
     @Test
     public void AA_09() throws Exception {
         add_to_report("AA_09");
@@ -209,7 +209,7 @@ public class ArmAway extends Setup{
         verifySystemState("DISARMED");
         log.log(LogStatus.PASS, ("System is Disarmed"));
         System.out.println("System is Disarmed" + "\n__________________________");
-    }
+    }  // run time 1 min 48 sec
     @Test
     public void AA_10() throws Exception {
         add_to_report("AA_10");
@@ -228,7 +228,7 @@ public class ArmAway extends Setup{
         verifySystemState("DISARMED");
         log.log(LogStatus.PASS, ("System is Disarmed"));
         System.out.println("System is Disarmed" + "\n__________________________");
-    }
+    }  // run time 1 min 50 sec
     @Test
     public void AA_13_dw10() throws Exception {
         add_to_report("AA_13");
@@ -247,7 +247,7 @@ public class ArmAway extends Setup{
         verifySystemState("DISARMED");
         log.log(LogStatus.PASS, ("System is Disarmed"));
         System.out.println("System is Disarmed" + "\n__________________________");
-    }
+    }  // run time 1 min 15 sec
     @Test
     public void AA_14_dw12() throws Exception {
         add_to_report("AA_14");
@@ -266,7 +266,7 @@ public class ArmAway extends Setup{
         verifySystemState("DISARMED");
         log.log(LogStatus.PASS, ("System is Disarmed"));
         System.out.println("System is Disarmed" + "\n__________________________");
-    }
+    }  // run time 1 min 15 sec
     @Test
     public void AA_15_dw13() throws Exception {
         add_to_report("AA_15");
@@ -284,7 +284,7 @@ public class ArmAway extends Setup{
         verifySystemState("DISARMED");
         log.log(LogStatus.PASS, ("System is Disarmed"));
         System.out.println("System is Disarmed" + "\n__________________________");
-    }
+    }  // run time 59 sec
     @Test
     public void AA_16_dw14() throws Exception {
         add_to_report("AA_16");
@@ -302,7 +302,7 @@ public class ArmAway extends Setup{
         verifySystemState("DISARMED");
         log.log(LogStatus.PASS, ("System is Disarmed"));
         System.out.println("System is Disarmed" + "\n__________________________");
-    }
+    }  // run time 59 sec
     @Test
     public void AA_17_dw16() throws Exception {
         add_to_report("AA_17");
@@ -320,7 +320,7 @@ public class ArmAway extends Setup{
         verifySystemState("DISARMED");
         log.log(LogStatus.PASS, ("System is Disarmed"));
         System.out.println("System is Disarmed" + "\n__________________________");
-    }
+    }  // run time 59 sec
     @Test
     public void AA_18_m35() throws Exception {
         add_to_report("AA_18");
@@ -337,7 +337,7 @@ public class ArmAway extends Setup{
         verifySystemState("DISARMED");
         log.log(LogStatus.PASS, ("System is Disarmed"));
         System.out.println("System is Disarmed" + "\n__________________________");
-    }
+    }  // run time 1 min 11 sec
     @Test
     public void AA_19_m17() throws Exception {
         add_to_report("AA_19");
@@ -353,7 +353,7 @@ public class ArmAway extends Setup{
         verifySystemState("DISARMED");
         log.log(LogStatus.PASS, ("System is Disarmed"));
         System.out.println("System is Disarmed" + "\n__________________________");
-    }
+    }  // run time 1 min 29 sec
     @Test
     public void AA_20_dw10_dw12() throws Exception {
         add_to_report("AA_20");
@@ -374,7 +374,7 @@ public class ArmAway extends Setup{
         verifySystemState("DISARMED");
         log.log(LogStatus.PASS, ("System is Disarmed"));
         System.out.println("System is Disarmed" + "\n__________________________");
-    }
+    }  // run time 1 min 13 sec
     @Test
     public void AA_21_dw10_dw13() throws Exception {
         add_to_report("AA_21");
@@ -395,7 +395,7 @@ public class ArmAway extends Setup{
         verifySystemState("DISARMED");
         log.log(LogStatus.PASS, ("System is Disarmed"));
         System.out.println("System is Disarmed" + "\n__________________________");
-    }
+    }  // run time 1 min 12 sec
     @Test
     public void AA_22_dw10_dw14() throws Exception {
         add_to_report("AA_22");
@@ -416,7 +416,7 @@ public class ArmAway extends Setup{
         verifySystemState("DISARMED");
         log.log(LogStatus.PASS, ("System is Disarmed"));
         System.out.println("System is Disarmed" + "\n__________________________");
-    }
+    }  // run time 1 min 12 sec
     @Test
     public void AA_23_dw10_dw16() throws Exception {
         add_to_report("AA_23");
@@ -437,7 +437,7 @@ public class ArmAway extends Setup{
         verifySystemState("DISARMED");
         log.log(LogStatus.PASS, ("System is Disarmed"));
         System.out.println("System is Disarmed" + "\n__________________________");
-    }
+    } // run time 1 min 12 sec
     @Test
     public void AA_24_dw10_m35() throws Exception {
         add_to_report("AA_24");
@@ -457,7 +457,7 @@ public class ArmAway extends Setup{
         verifySystemState("DISARMED");
         log.log(LogStatus.PASS, ("System is Disarmed"));
         System.out.println("System is Disarmed" + "\n__________________________");
-    }
+    }  //run time 1 min 12 sec
     @Test
     public void AA_31_dw8() throws Exception {
         add_to_report("AA_31");
@@ -474,7 +474,7 @@ public class ArmAway extends Setup{
         verifySystemState("DISARMED");
         log.log(LogStatus.PASS, ("System is Disarmed"));
         System.out.println("System is Disarmed" + "\n__________________________");
-    }
+    }  // run time 1 min 0 sec
     @Test
     public void AA_32_dw9() throws Exception {
         add_to_report("AA_32");
@@ -492,7 +492,7 @@ public class ArmAway extends Setup{
         verifySystemState("DISARMED");
         log.log(LogStatus.PASS, ("System is Disarmed"));
         System.out.println("System is Disarmed" + "\n__________________________");
-    }
+    }  // run time 1 min 0 sec
     @Test
     public void AA_33_dw10() throws Exception {
         add_to_report("AA_33");
@@ -510,7 +510,7 @@ public class ArmAway extends Setup{
         verifySystemState("DISARMED");
         log.log(LogStatus.PASS, ("System is Disarmed"));
         System.out.println("System is Disarmed" + "\n__________________________");
-    }
+    }  // run time 59 sec
     @Test
     public void AA_34_dw12() throws Exception {
         add_to_report("AA_34");
@@ -528,7 +528,7 @@ public class ArmAway extends Setup{
         verifySystemState("DISARMED");
         log.log(LogStatus.PASS, ("System is Disarmed"));
         System.out.println("System is Disarmed" + "\n__________________________");
-    }
+    }  // run time 1 min 0 sec
     @Test
     public void AA_35_dw13() throws Exception {
         add_to_report("AA_35");
@@ -546,7 +546,7 @@ public class ArmAway extends Setup{
         verifySystemState("DISARMED");
         log.log(LogStatus.PASS, ("System is Disarmed"));
         System.out.println("System is Disarmed" + "\n__________________________");
-    }
+    }  // run time 1 min 0 sec
     @Test
     public void AA_36_dw14() throws Exception {
         add_to_report("AA_36");
@@ -564,7 +564,7 @@ public class ArmAway extends Setup{
         verifySystemState("DISARMED");
         log.log(LogStatus.PASS, ("System is Disarmed"));
         System.out.println("System is Disarmed" + "\n__________________________");
-    }
+    }  // run time 1 min 1 sec
     @Test
     public void AA_37_dw16() throws Exception {
         add_to_report("AA_37");
@@ -582,7 +582,7 @@ public class ArmAway extends Setup{
         verifySystemState("DISARMED");
         log.log(LogStatus.PASS, ("System is Disarmed"));
         System.out.println("System is Disarmed" + "\n__________________________");
-    }
+    }  // run time 1 min 0 sec
     @Test
     public void AA_38_m15() throws Exception {
         add_to_report("AA_38");
@@ -601,7 +601,7 @@ public class ArmAway extends Setup{
         verifySystemState("DISARMED");
         log.log(LogStatus.PASS, ("System is Disarmed"));
         System.out.println("System is Disarmed" + "\n__________________________");
-    }
+    }  // run time 1 min 1 sec
     @Test
     public void AA_39_m17() throws Exception {
         add_to_report("AA_39");
@@ -620,7 +620,7 @@ public class ArmAway extends Setup{
         verifySystemState("DISARMED");
         log.log(LogStatus.PASS, ("System is Disarmed"));
         System.out.println("System is Disarmed" + "\n__________________________");
-    }
+    }  // run time 1 min 2 sec
     @Test
     public void AA_40_m20() throws Exception {
         add_to_report("AA_40");
@@ -639,7 +639,7 @@ public class ArmAway extends Setup{
         verifySystemState("DISARMED");
         log.log(LogStatus.PASS, ("System is Disarmed"));
         System.out.println("System is Disarmed" + "\n__________________________");
-    }
+    }  // run time 1 min 2 sec
     @Test
     public void AA_41_m35() throws Exception {
         add_to_report("AA_41");
@@ -658,7 +658,7 @@ public class ArmAway extends Setup{
         verifySystemState("DISARMED");
         log.log(LogStatus.PASS, ("System is Disarmed"));
         System.out.println("System is Disarmed" + "\n__________________________");
-    }
+    }  // run time 1 min 1 sec
     @Test
     public void AA_42_smoke() throws Exception {
         add_to_report("AA_42");
@@ -677,7 +677,7 @@ public class ArmAway extends Setup{
         verifySystemState("DISARMED");
         log.log(LogStatus.PASS, ("System is Disarmed"));
         System.out.println("System is Disarmed" + "\n__________________________");
-    }
+    }  // run time 1 min 1 sec
     @Test
     public void AA_43_co() throws Exception {
         add_to_report("AA_43");
@@ -696,7 +696,7 @@ public class ArmAway extends Setup{
         verifySystemState("DISARMED");
         log.log(LogStatus.PASS, ("System is Disarmed"));
         System.out.println("System is Disarmed" + "\n__________________________");
-    }
+    }  // run time 1 min 1 sec
 
 
     @AfterTest(alwaysRun = true)

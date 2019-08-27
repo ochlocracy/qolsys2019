@@ -59,10 +59,11 @@ public class Driver {
         return panel_UDID;
     }
 
-    public void killnode() throws IOException {
+    public void killnode() throws IOException, InterruptedException {
         String command = " killall node";
         for (int i = 3; i > 0; i--) {
-            rt.exec(ConfigProps.adbPath + command);
+            rt.exec( command);
+            Thread.sleep(1000);
         }
     }
 

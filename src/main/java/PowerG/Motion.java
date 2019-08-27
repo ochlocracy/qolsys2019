@@ -129,6 +129,7 @@ public class Motion extends Setup {
     }
 
     /*** ARM STAY ***/
+    // run time 50 min 15 sec
 
     @Test
     public void ArmStayDelay_15() throws Exception {
@@ -400,6 +401,7 @@ public class Motion extends Setup {
     @AfterTest
     public void tearDown() throws IOException, InterruptedException {
         driver.quit();
+        adc.driver1.quit();
         service.stop();
     }
     @AfterMethod
@@ -410,6 +412,7 @@ public class Motion extends Setup {
         }
         report.endTest(log);
         report.flush();
-        adc.driver1.quit();
+        System.out.println("close webpage");
+        adc.driver1.close();
     }
 }
