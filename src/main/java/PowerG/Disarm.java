@@ -840,7 +840,7 @@ public class Disarm extends Setup {
         log.log(LogStatus.PASS, ("Pass: sensor is readded successfully"));
         System.out.println("Pass: Sensor is readded successfully " + newLine + "_________________");
     }
-@Test
+
     public void Dis_31_DW10() throws Exception {
         adc.webDriverSetUp();
         add_to_report("Dis_31");

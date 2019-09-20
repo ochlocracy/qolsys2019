@@ -283,6 +283,18 @@ public class Setup extends Driver {
         Thread.sleep(2000);
         enterDefaultDealerCode();
     }
+    public void navigateToAdvancedSettingsPagewithMasterCode() throws InterruptedException {
+        menu = PageFactory.initElements(driver, SlideMenu.class);
+        settings = PageFactory.initElements(driver, SettingsPage.class);
+        menu.Slide_menu_open.click();
+        System.out.println("Settings Menu");
+        menu.Settings.click();
+        Thread.sleep(1000);
+        System.out.println("Advanced Settings");
+        settings.ADVANCED_SETTINGS.click();
+        Thread.sleep(2000);
+        enterDefaultUserCode();
+    }
 
     public void navigateToEditSensorPage() throws IOException, InterruptedException {
         InstallationPage instal = PageFactory.initElements(driver, InstallationPage.class);
@@ -294,6 +306,16 @@ public class Setup extends Driver {
         instal.DEVICES.click();
         dev.Security_Sensors.click();
         sec.Edit_Sensor.click();
+    }
+
+    public void navigateToPartitionsAdvancedSettingsPage() throws InterruptedException {
+        SlideMenu menu = PageFactory.initElements(driver, SlideMenu.class);
+        SettingsPage settings = PageFactory.initElements(driver, SettingsPage.class);
+        menu.Slide_menu_open.click();
+        menu.Settings.click();
+        Thread.sleep(1000);
+        settings.ADVANCED_SETTINGS.click();
+        Thread.sleep(2000);
     }
 
     public void addPrimaryCall(int zone, int group, int sensor_dec, int sensor_type) throws IOException {
@@ -482,4 +504,8 @@ public class Setup extends Driver {
             }
         }
     }
+
+
+
+
 }
