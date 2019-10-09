@@ -617,8 +617,9 @@ public class ArmStay extends Setup{
         Thread.sleep(1000);
         pgprimaryCall(123, 1441, PGSensorsActivity.MOTIONACTIVE);
         Thread.sleep(1000);
+        System.out.println("enter user code");
         enterDefaultUserCode();
-        Thread.sleep(1000);
+        Thread.sleep(2000);
         log.log(LogStatus.PASS, ("Pass: system is disarmed"));
         System.out.println("Pass: system is disarmed" + "\n__________________________");
     }
@@ -638,7 +639,7 @@ public class ArmStay extends Setup{
         pgprimaryCall(122, 1423, PGSensorsActivity.MOTIONACTIVE);
         Thread.sleep(1000);
         enterDefaultUserCode();
-        Thread.sleep(1000);
+        Thread.sleep(2000);
         log.log(LogStatus.PASS, ("Pass: system is disarmed"));
         System.out.println("Pass: system is disarmed" + "\n__________________________");
     }
@@ -1595,6 +1596,7 @@ public class ArmStay extends Setup{
     public void tearDown() throws IOException, InterruptedException {
         driver.quit();
         service.stop();
+        adc.driver1.quit();
     }
 
     @AfterMethod
@@ -1608,6 +1610,6 @@ public class ArmStay extends Setup{
         }
         report.endTest(log);
         report.flush();
-        adc.driver1.quit();
+        adc.driver1.close();
     }
 }

@@ -393,7 +393,7 @@ public class Shock extends Setup {
         swipeUp();
         swipeUp();
         swipeUp();
-        swipeUp();
+        //swipeUp();
         TimeUnit.SECONDS.sleep(3);
         WebElement b = driver.findElement(By.className("android.widget.LinearLayout"));
         List<WebElement> li = driver.findElements(By.id("com.qolsys:id/imageView1"));

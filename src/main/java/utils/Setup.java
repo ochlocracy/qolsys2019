@@ -64,7 +64,7 @@ public class Setup extends Driver {
         int endY = 227;
         int startX = 314;
         driver.swipe(startX, startY, startX, endY, 3000);
-        Thread.sleep(2000);
+        Thread.sleep(3000);
     }
 
     public void swipeFromLefttoRight() throws Exception {
@@ -195,9 +195,9 @@ public class Setup extends Driver {
 
     public boolean alarmVerification(String sensor_name) throws Exception {
         swipeFromRighttoLeft();
-        Thread.sleep(1000);
-        driver.findElement(By.xpath("//android.widget.TextView[@text='ALARMS']")).click();
-        Thread.sleep(1000);
+        Thread.sleep(3000);
+        driver.findElement(By.id("com.qolsys:id/camera_alarms_filter")).click();
+        Thread.sleep(2000);
         WebElement element = driver.findElement(By.xpath("//android.widget.TextView[@text='" + sensor_name + "']"));
         List<WebElement> date_time = driver.findElements(By.id("com.qolsys:id/type"));
         try {

@@ -10,9 +10,9 @@ import java.util.List;
 public class DeviceMessages {
 
     PowergDeviceHandler powergDevice = PowergDeviceHandler.getPowergDeviceHandler();
-
-    List<String> door_window = Arrays.asList("1003434", "1011234", "1042222", "1072121", "1085445", "1093456", "1105432");
-    List<String> motion = Arrays.asList("1201111", "1222323", "1234567", "1267676", "1275511", "1282345", "1298888", "1304343", "1408998", "1427654", "1501212");
+//"1201111", "1222323", "1234567", "1267676", "1275511", "1282345",,
+    List<String> door_window = Arrays.asList( "1011234", "1042222", "1072121", "1085445", "1093456");
+    List<String> motion = Arrays.asList( "1290123", "1304343", "1408998", "1427654", "1501212");
 
     public void setDevice(String Id){
         int ret = powergDevice.set_sensor_info(0, Id, (byte)0x0A);

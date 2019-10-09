@@ -113,7 +113,7 @@ public class CO extends Setup {
         Thread.sleep(2000);
         pgprimaryCall(220, 1661, PGSensorsActivity.COREST);
         ADC_verification(element_to_verify, element_to_verify1);
-    }
+    }  // run time 8 min 59 sec
 
     @Test
     public void ArmStayExitDelay_34() throws Exception {

@@ -76,7 +76,7 @@ public class ArmAway extends Setup{
     @Test
     public void AA_01() throws Exception {
         UIRepo ui = PageFactory.initElements(adc.driver1, UIRepo.class);
-        create_report( "AA_01");
+        create_report( "GEN-3256");
         log.log(LogStatus.INFO, ("*Away_01* Verify the system can be disarmed from the ADC"));
         System.out.println("*Away_01* Verify the system can be disarmed from the ADC");
         ARM_AWAY(ConfigProps.longExitDelay);
@@ -93,7 +93,7 @@ public class ArmAway extends Setup{
     }  // run time 1 min 30 sec
     @Test
     public void AA_03_dw10() throws Exception {
-        add_to_report("AA_03");
+        add_to_report("GEN-3258");
         log.log(LogStatus.INFO, ("*Verify the system can be disarmed during the entry delay DW10"));
         System.out.println("*Verify the system can be disarmed during the entry delay DW10");
         ARM_AWAY(ConfigProps.longExitDelay);
@@ -109,7 +109,7 @@ public class ArmAway extends Setup{
     }  // run time 1 min 0 sec
     @Test
     public void AA_04_dw12() throws Exception {
-        add_to_report("AA_04");
+        add_to_report("GEN-3259");
         log.log(LogStatus.INFO, ("*Verify the system can be disarmed during the entry delay DW12"));
         System.out.println("*Verify the system can be disarmed during the entry delay DW12");
         ARM_AWAY(ConfigProps.longExitDelay);
@@ -125,7 +125,7 @@ public class ArmAway extends Setup{
     }  // run time 1 min 0 sec
     @Test
     public void AA_05_dw12() throws Exception {
-        add_to_report("AA_05");
+        add_to_report("GEN-3260");
         log.log(LogStatus.INFO, ("*Verify the system can be disarmed during the entry delay using a Guest code DW12"));
         System.out.println("*Verify the system can be disarmed during the entry delay using a Guest code DW12");
         ARM_AWAY(ConfigProps.longExitDelay);
@@ -141,7 +141,7 @@ public class ArmAway extends Setup{
     }  // run time 56 sec
     @Test
     public void AA_06_dw10_dw12() throws Exception {
-        add_to_report("AA_06");
+        add_to_report("GEN-3261");
         log.log(LogStatus.INFO, ("*Verify the system can be disarmed during the entry delay DW10, DW12"));
         System.out.println("*Verify the system can be disarmed during the entry delay DW10, DW12");
         ARM_AWAY(ConfigProps.longExitDelay);
@@ -161,7 +161,7 @@ public class ArmAway extends Setup{
     }  // run time 1 min 2 sec
     @Test
     public void AA_07_dw10_m15() throws Exception {
-        add_to_report("AA_07");
+        add_to_report("GEN-3262");
         log.log(LogStatus.INFO, ("*Verify the system can be disarmed during the entry delay DW10, Motion15"));
         System.out.println("*Verify the system can be disarmed during the entry delay DW10, Motion15");
         ARM_AWAY(ConfigProps.longExitDelay);
@@ -179,7 +179,7 @@ public class ArmAway extends Setup{
     }  // run time 57 sec
     @Test
     public void AA_08_m20() throws Exception {
-        add_to_report("AA_08");
+        add_to_report("GEN-3263");
         log.log(LogStatus.INFO, ("*Verify the system can be disarmed during the entry delay Motion20"));
         System.out.println("*Verify the system can be disarmed during the entry delay Motion20");
         ARM_AWAY(ConfigProps.longExitDelay);
@@ -193,7 +193,7 @@ public class ArmAway extends Setup{
     }  // run time 56 sec
     @Test
     public void AA_09() throws Exception {
-        add_to_report("AA_09");
+        add_to_report("GEN-3264");
         log.log(LogStatus.INFO, ("*Verify the system will pretend to disarm if a valid duress code is used and a duress alarm will be sent to ADC, simulating the user being forced to disarm the system."));
         System.out.println("*Verify the system will pretend to disarm if a valid duress code is used and a duress alarm will be sent to ADC, simulating the user being forced to disarm the system.");
         Thread.sleep(2000);
@@ -212,7 +212,7 @@ public class ArmAway extends Setup{
     }  // run time 1 min 48 sec
     @Test
     public void AA_10() throws Exception {
-        add_to_report("AA_10");
+        add_to_report("GEN-3265");
         log.log(LogStatus.INFO, ("*Verify the system will pretend to disarm if a valid duress code is used and a duress alarm will be sent to ADC, simulating the user being forced to disarm the system."));
         System.out.println("*Verify the system will pretend to disarm if a valid duress code is used and a duress alarm will be sent to ADC, simulating the user being forced to disarm the system.");
         Thread.sleep(2000);
@@ -231,7 +231,7 @@ public class ArmAway extends Setup{
     }  // run time 1 min 50 sec
     @Test
     public void AA_13_dw10() throws Exception {
-        add_to_report("AA_13");
+        add_to_report("GEN-3268");
         log.log(LogStatus.INFO, ("*Verify the system will go into alarm at the end of the entry delay if a sensor in group 10 is opened in Arm Away*"));
         System.out.println("*Verify the system will go into alarm at the end of the entry delay if a sensor in group 10 is opened in Arm Away*");
         Thread.sleep(2000);
@@ -250,7 +250,7 @@ public class ArmAway extends Setup{
     }  // run time 1 min 15 sec
     @Test
     public void AA_14_dw12() throws Exception {
-        add_to_report("AA_14");
+        add_to_report("GEN-3269");
         log.log(LogStatus.INFO, ("*Verify the system will go into alarm at the end of the entry delay if a sensor in group 12 is opened in Arm Away*"));
         System.out.println("*Verify the system will go into alarm at the end of the entry delay if a sensor in group 12 is opened in Arm Away*");
         Thread.sleep(2000);
@@ -269,7 +269,7 @@ public class ArmAway extends Setup{
     }  // run time 1 min 15 sec
     @Test
     public void AA_15_dw13() throws Exception {
-        add_to_report("AA_15");
+        add_to_report("GEN-3270");
         log.log(LogStatus.INFO, ("*Verify the system will go into immediate alarm if a sensor in group 13 is opened in Arm Away*"));
         System.out.println("*Verify the system will go into immediate alarm if a sensor in group 13 is opened in Arm Away*");
         Thread.sleep(2000);
@@ -287,7 +287,7 @@ public class ArmAway extends Setup{
     }  // run time 59 sec
     @Test
     public void AA_16_dw14() throws Exception {
-        add_to_report("AA_16");
+        add_to_report("GEN-3271");
         log.log(LogStatus.INFO, ("*Verify the system will go into immediate alarm if a sensor in group 14 is opened in Arm Away*"));
         System.out.println("*Verify the system will go into immediate alarm if a sensor in group 14 is opened in Arm Away*");
         Thread.sleep(2000);
@@ -305,7 +305,7 @@ public class ArmAway extends Setup{
     }  // run time 59 sec
     @Test
     public void AA_17_dw16() throws Exception {
-        add_to_report("AA_17");
+        add_to_report("GEN-3272");
         log.log(LogStatus.INFO, ("*Verify the system will go into immediate alarm if a sensor in group 16 is opened in Arm Away*"));
         System.out.println("*Verify the system will go into immediate alarm if a sensor in group 16 is opened in Arm Away*");
         Thread.sleep(2000);
@@ -323,7 +323,7 @@ public class ArmAway extends Setup{
     }  // run time 59 sec
     @Test
     public void AA_18_m35() throws Exception {
-        add_to_report("AA_18");
+        add_to_report("GEN-3273");
         log.log(LogStatus.INFO, ("*Verify the system will go into alarm at the end of the entry delay if a sensor in group 35 is Activated in Arm Away*"));
         System.out.println("*Verify the system will go into alarm at the end of the entry delay if a sensor in group 35 is Activated in Arm Away*");
         Thread.sleep(2000);
